@@ -20,9 +20,17 @@ class CreateGoals extends Migration {
 			$table->date('accomplishedDate')->nullable();
 			$table->timestamps();
 		});
+
+		Schema::table('goals', function($table) {
+			$table->index(array('user_id', 'activity_id', 'metric'));
+		});
 	}
 
 	public function down() {
+		Schema::table('goals', function($table) {
+			$table->dropIndex('goals_user_id_activity_id_metric_index');
+		});
+
 		Schema::drop('goals');
 	}
 
