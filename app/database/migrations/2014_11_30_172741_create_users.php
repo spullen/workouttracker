@@ -5,7 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUsers extends Migration {
 
-
 	public function up() {
 		Schema::create('users', function($table) {
 			$table->increments('id');
