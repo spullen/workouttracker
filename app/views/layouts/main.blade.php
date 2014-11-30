@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Share My Ride</title>
+  <title>Workout Tracker</title>
 
   <link rel="stylesheet" href="{{ asset('css/application.css') }}" />
   <meta content="_token" name="csrf-param" />
