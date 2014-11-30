@@ -22,7 +22,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'rideshare',
+			'database'  => 'workout_tracker',
 			'username'  => 'root',
 			'password'  => getenv('DB_PASSWORD'),
 			'charset'   => 'utf8',
