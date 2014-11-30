@@ -1,25 +1,34 @@
-## Laravel PHP Framework
+# CSCI E-15 Project 4 - Workout Tracker
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+[View Site](http://p4.scottpullen.me)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+[Demo]()
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+## Description
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+This application allows you to track your workouts. You can also set up goals to push yourself to new levels. Overall this application is designed to motivate you to stay fit!
 
-## Official Documentation
+## Features
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+- Log your workouts
+- Tracks:
+	- Activity type
+	- Metric
+	- Value of the metric
+- Create goals for yourself
+- When you log a workout it will find your active goals and update their status
+- Have a dashboard to have a quick view of your active goals and other recent activities
 
-### Contributing To Laravel
+## Future Extensions
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+These are the nice to haves (stretch goals for this application)
 
-### License
+- Social aspect
+	- Follow your friends' activities
+	- Cheer your friends on
+- Charts displaying activity over time
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+## Resources
+- [jQuery](http://jquery.com)
+- [jquery_ujs](https://github.com/rails/jquery_ujs)
+- [authority-controller](https://github.com/efficiently/authority-controller)
