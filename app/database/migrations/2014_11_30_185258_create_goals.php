@@ -14,13 +14,13 @@ class CreateGoals extends Migration {
 			$table->foreign('activity_id')->references('id')->on('activities');
 			$table->string('title');
 			$table->string('metric');
-			$table->decimal('targetAmount', 6, 2)->default(0.01);
-			$table->date('targetDate');
-			$table->decimal('currentAmount', 6, 2)->default(0.0);
-			$table->date('accomplishedDate')->nullable();
+			$table->decimal('target_amount', 6, 2)->default(0.01);
+			$table->date('target_date');
+			$table->decimal('current_amount', 6, 2)->default(0.0);
+			$table->date('accomplished_date')->nullable();
 			$table->timestamps();
 		});
-
+	
 		Schema::table('goals', function($table) {
 			$table->index(array('user_id', 'activity_id', 'metric'));
 		});
