@@ -23,11 +23,11 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'rideshare',
-			'username'  => 'root',
+			'username'  => getenv('DB_USERNAME'),
 			'password'  => getenv('DB_PASSWORD'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => ''
+			'prefix'    => '',
 		)
 	),
 
