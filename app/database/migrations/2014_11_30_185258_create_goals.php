@@ -27,10 +27,6 @@ class CreateGoals extends Migration {
 	}
 
 	public function down() {
-		Schema::table('goals', function($table) {
-			$table->dropIndex('goals_user_id_activity_id_metric_index');
-		});
-
 		Schema::drop('goals');
 	}
 
