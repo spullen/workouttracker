@@ -14,6 +14,7 @@ class CreateUsers extends Migration {
 			$table->string('email');
 			$table->string('password', 60);
 			$table->rememberToken();
+			$table->boolean('is_admin')->default(false);
 			$table->timestamps();
 		});
 

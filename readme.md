@@ -19,14 +19,16 @@ This application allows you to track your workouts. You can also set up goals to
 - When you log a workout it will find your active goals and update their status
 - Have a dashboard to have a quick view of your active goals and other recent activities
 
-## Future Extensions
+## Bonus/Future Extensions
 
 These are the nice to haves (stretch goals for this application)
 
 - Social aspect
 	- Follow your friends' activities
 	- Cheer your friends on
+	- Challenge friend's (goal++)
 - Charts displaying activity over time
+- Calorie calculator (given a workout the type and duration estimate the number of calories burned)
 
 ## Resources
 - [jQuery](http://jquery.com)
