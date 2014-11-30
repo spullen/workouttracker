@@ -1,6 +1,11 @@
 <?php
 
 class BaseController extends Controller {
+	use Efficiently\AuthorityController\ControllerAdditions;
+
+	public function __construct() {
+    $this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
+  }
 
 	/**
 	 * Setup the layout used by the controller.
