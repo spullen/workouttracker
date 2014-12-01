@@ -34,3 +34,6 @@ These are the nice to haves (stretch goals for this application)
 - [jQuery](http://jquery.com)
 - [jquery_ujs](https://github.com/rails/jquery_ujs)
 - [authority-controller](https://github.com/efficiently/authority-controller)
+- [bootstrap](https://getbootstrap.com)
+- [bootstrap-datetimepicker](https://github.com/Eonasdan/bootstrap-datetimepicker)
+- momentjs

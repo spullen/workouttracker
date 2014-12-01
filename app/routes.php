@@ -20,4 +20,6 @@ Route::get('login', 'SessionController@create');
 Route::post('login', 'SessionController@store');
 Route::delete('logout', 'SessionController@destroy');
 
-Route::resource('workout', 'WorkoutController');
+Route::group(array('before' => 'auth'), function() {
+  Route::resource('workouts', 'WorkoutsController');
+});
