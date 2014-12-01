@@ -9,7 +9,7 @@ class CreateWorkouts extends Migration {
 		Schema::create('workouts', function($table) {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
-			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('user_id')->references('id')->on('users')->on_delete('cascade');
 			$table->integer('activity_id')->unsigned();
 			$table->foreign('activity_id')->references('id')->on('activities');
 			$table->string('metric');
