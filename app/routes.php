@@ -19,3 +19,5 @@ Route::resource('register', 'RegistrationController', array('only' => array('cre
 Route::get('login', 'SessionController@create');
 Route::post('login', 'SessionController@store');
 Route::delete('logout', 'SessionController@destroy');
+
+Route::resource('workout', 'WorkoutController');
