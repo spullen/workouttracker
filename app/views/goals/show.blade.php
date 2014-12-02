@@ -2,7 +2,7 @@
 
 @section('header')
 <div class="page-header">
-  <h1>{{{ $goal->title }}} @unless($goal->accomplished_date)({{ $goal->percent_accomplished }}% to goal)@endif</h1>
+  <h1>{{{ $goal->title }}}</h1>
   <div>
     <a href="{{ URL::route('goals.edit', array($goal->id)) }}" class="btn btn-info">Edit</a>
     <a href="{{ URL::route('goals.destroy', array($goal->id)) }}" class="btn btn-danger" data-method="delete" data-confirm="Are you sure you want to delete this goal?">Delete</a> 
@@ -12,11 +12,24 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     @if($goal->accomplished_date)
       <div class="alert alert-success">Woot! You did it! Accomplished on {{ $goal->accomplished_date }}</div>
-    @endif
+    @else
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{ $goal->percent_accomplished }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $goal->percent_accomplished }}%;">
+          {{ $goal->percent_accomplished }}%
+        </div>
+      </div>
 
+      <p>Go! Go! Go! You can do it!</p>
+      <p><a href="{{ URL::route('workouts.create') }}">Log workout</a></p>
+    @endif
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
     <dl>
       <dt>Activity Type</dt>
       <dd>{{ $goal->activity->name }}</dd>
@@ -33,8 +46,6 @@
       <dt>Target Date</dt>
       <dd>{{ $goal->target_date }}</dd>
     </dl>
-
-    <a href="{{ URL::route('workouts.create') }}">Log workout</a>
   </div>
 </div>
 
