@@ -23,7 +23,7 @@
       <tbody>
         @foreach($goals as $goal)
           <tr>
-            <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->title}}</a></td>
+            <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->title }}</a></td>
             <td>{{ $goal->activity->name }}</td>
             <td>{{ $goal->metric }}</td>
             <td>{{ $goal->current_amount }}</td>
@@ -33,7 +33,7 @@
               @if($goal->accomplished_date)
                 Accomplished on: {{ $goal->accomplished_date }}! Woot!
               @else
-                {{ $goal->percentAccomplished }}%
+                {{ $goal->percent_accomplished }}%
               @endif
             </td>
           </tr>
