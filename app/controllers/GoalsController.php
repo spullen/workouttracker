@@ -19,7 +19,7 @@ class GoalsController extends \BaseController {
 	}
 
 	public function store() {
-		$data = Input::only('title', 'activity_id', 'metric', 'targetAmount', 'targetDate');
+		$data = Input::only('title', 'activity_id', 'metric', 'target_amount', 'target_date');
 
 		$goal = new Goal($data);
 
@@ -27,8 +27,8 @@ class GoalsController extends \BaseController {
 			'activity_id' => array('required', 'numeric', 'exists:activities,id'),
 			'metric' => array('required', 'in:Distance,Reps,Count'),
 			'title' => array('required'),
-			'targetAmount' => array('required', 'numeric', 'min:0.01'),
-			'targetDate' => array('required', 'date_format:Y-m-d', 'after:' . Carbon::yesterday()->toDateString())
+			'target_amount' => array('required', 'numeric', 'min:0.01'),
+			'target_date' => array('required', 'date_format:Y-m-d', 'after:' . Carbon::yesterday('US/Eastern')->toDateString())
 		);
 
 		$validator = Validator::make($data, $rules);
@@ -41,8 +41,8 @@ class GoalsController extends \BaseController {
 			$goal->user()->associate(Auth::user());
 			$goal->activity_id = $data['activity_id'];
 			$goal->metric = $data['metric'];
-			$goal->targetAmount = $data['targetAmount'];
-			$goal->targetDate = $data['targetDate'];
+			$goal->targetAmount = $data['target_amount'];
+			$goal->targetDate = $data['target_date'];
 			$goal->save();
 
 			Session::flash('message', 'Successfully logged goal!');
@@ -63,14 +63,14 @@ class GoalsController extends \BaseController {
 	}
 
 	public function update($id) {
-		$data = Input::only('title', 'targetAmount', 'targetDate');
+		$data = Input::only('title', 'target_amount', 'target_date');
 
 		$goal = Goal::find($id);
 
 		$rules = array(
 			'title' => array('required'),
-			'targetAmount' => array('required', 'numeric', 'min:0.01'),
-			'targetDate' => array('required', 'date_format:Y-m-d', 'after:' . Carbon::yesterday()->toDateString())
+			'target_amount' => array('required', 'numeric', 'min:0.01'),
+			'target_date' => array('required', 'date_format:Y-m-d', 'after:' . Carbon::yesterday('US/Eastern')->toDateString())
 		);
 
 		$validator = Validator::make($data, $rules);
@@ -80,8 +80,9 @@ class GoalsController extends \BaseController {
 							->withErrors($validator)
 							->withInput(Input::all());
 		} else {
-			$goal->targetAmount = $data['targetAmount'];
-			$goal->targetDate = $data['targetDate'];
+			$goal->title = $data['title'];
+			$goal->target_amount = $data['target_amount'];
+			$goal->target_date = $data['target_date'];
 			$goal->save();
 
 			Session::flash('message', 'Successfully updated goal!');

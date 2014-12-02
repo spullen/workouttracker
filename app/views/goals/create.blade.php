@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-  {{ Form::model($goal, ['method' => 'post', 'action' => 'WorkoutsController@store', 'class' => 'form-horizontal']) }}
+  {{ Form::model($goal, ['method' => 'post', 'action' => 'GoalsController@store', 'class' => 'form-horizontal']) }}
     <div class="form-group {{ $errors->has('activity_id') ? 'has-error' : '' }}">
       {{ Form::label('activity_id', 'Activity Type', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
