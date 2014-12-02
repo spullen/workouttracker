@@ -14,4 +14,8 @@ class Goal extends Eloquent {
   public function workouts() {
     return $this->belongsToMany('Workout', 'goal_workouts', 'goal_id', 'workout_id');
   }
+
+  public function getPercentAccomplishedAttribute() {
+    return (int)($this->currentAmount / $this->targetAmount) * 100;
+  }
 }
