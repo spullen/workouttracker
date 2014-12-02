@@ -16,6 +16,10 @@ class Goal extends Eloquent {
   }
 
   public function getPercentAccomplishedAttribute() {
-    return (int)($this->current_amount / $this->target_amount) * 100;
+    $percent = (int)($this->current_amount / $this->target_amount) * 100;
+    if($percent > 100) {
+      $percent = 100;
+    }
+    return $percent;
   }
 }
