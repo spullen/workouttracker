@@ -22,4 +22,5 @@ Route::delete('logout', 'SessionController@destroy');
 
 Route::group(array('before' => 'auth'), function() {
   Route::resource('workouts', 'WorkoutsController');
+  Route::resource('goals', 'GoalsController');
 });
