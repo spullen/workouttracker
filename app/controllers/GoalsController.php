@@ -28,7 +28,7 @@ class GoalsController extends \BaseController {
 			'metric' => array('required', 'in:Distance,Reps,Count'),
 			'title' => array('required'),
 			'target_amount' => array('required', 'numeric', 'min:0.01'),
-			'target_date' => array('required', 'date_format:Y-m-d', 'after:' . Carbon::yesterday('US/Eastern')->toDateString())
+			'target_date' => array('required', 'regex:/\d{1,2}-\d{1,2}-\d{4}/', 'date_format:Y-m-d', 'after:' . Carbon::yesterday('US/Eastern')->toDateString())
 		);
 
 		$validator = Validator::make($data, $rules);
@@ -70,7 +70,7 @@ class GoalsController extends \BaseController {
 		$rules = array(
 			'title' => array('required'),
 			'target_amount' => array('required', 'numeric', 'min:0.01'),
-			'target_date' => array('required', 'date_format:Y-m-d', 'after:' . Carbon::yesterday('US/Eastern')->toDateString())
+			'target_date' => array('required', 'regex:/\d{1,2}-\d{1,2}-\d{4}/', 'date_format:Y-m-d', 'after:' . Carbon::yesterday('US/Eastern')->toDateString())
 		);
 
 		$validator = Validator::make($data, $rules);
