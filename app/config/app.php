@@ -188,8 +188,9 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
+		'Carbon'            => 'Carbon\Carbon',
 		'Params'            => 'Efficiently\AuthorityController\Facades\Params',
-   		'Authority'         => 'Efficiently\AuthorityController\Facades\Authority',
+   	'Authority'         => 'Efficiently\AuthorityController\Facades\Authority',
 
 	),
 

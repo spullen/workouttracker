@@ -14,18 +14,16 @@
           <th>Activity</th>
           <th>Metric</th>
           <th>Amount</th>
-          <th>Start</th>
-          <th>Duration</th>
+          <th>Duration (in minutes)</th>
         </tr>
       </thead>
       <tbody>
         @foreach($workouts as $workout)
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><a href="{{ URL::route('workouts.show', array($workout->id)) }}">{{ $workout->activity->name }}</a></td>
+            <td>{{ $workout->metric }}</td>
+            <td>{{ $workout->amount }}</td>
+            <td>{{ $workout->duration }}</td>
           </tr>
         @endforeach
       </tbody>

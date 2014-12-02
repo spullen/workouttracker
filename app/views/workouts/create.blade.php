@@ -1,35 +1,25 @@
 @extends('layouts.main')
 
 @section('content')
-  {{ Form::model($workout, ['method' => 'post', 'action' => 'WorkoutsController@store']) }}
-    <div class="form-group">
-      {{ Form::label('activity_id', 'Activity Type', array('class' => 'control-label')) }}
-      <div>
+  {{ Form::model($workout, ['method' => 'post', 'action' => 'WorkoutsController@store', 'class' => 'form-horizontal']) }}
+    <div class="form-group {{ $errors->has('activity_id') ? 'has-error' : '' }}">
+      {{ Form::label('activity_id', 'Activity Type', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
         {{ Form::select('activity_id', WorkoutHelpers::activities(), $workout->activity_id, array('class' => 'form-control')) }}
+        {{ $errors->first('activity_id', '<span class="help-block">:message</span>') }}
       </div>
     </div>
-    <div class="form-group">
-      {{ Form::label('metric', 'Metric', array('class' => 'control-label')) }}
-      <div>
+    <div class="form-group {{ $errors->has('metric') ? 'has-error' : '' }}">
+      {{ Form::label('metric', 'Metric', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
         {{ Form::select('metric', WorkoutHelpers::metrics(), $workout->metric, array('class' => 'form-control')) }}
+        {{ $errors->first('metric', '<span class="help-block">:message</span>') }}
       </div>
     </div>
+    @include('workouts._form')
     <div class="form-group">
-      {{ Form::label('amount', 'Amount', array('class' => 'control-label')) }}
-      <div>
-        {{ Form::text('amount', $workout->amount, array('class' => 'form-control')) }}
-      </div>
-    </div>
-    <div class="form-group">
-      {{ Form::label('start', 'Start') }}
-      <div>
-        {{ Form::text('start', $workout->start, array('class' => 'form-control datetimepicker')) }}
-      </div>
-    </div>
-    <div class="form-group">
-      {{ Form::label('duration', 'Duration (in minutes)') }}
-      <div>
-        {{ Form::text('duration') }}
+      <div class="col-md-offset-2 col-md-6">
+        {{ Form::submit('Create', array('class' => 'btn btn-lg btn-primary')) }}
       </div>
     </div>
   {{ Form::close() }}

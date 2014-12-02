@@ -1,7 +1,7 @@
 <?php
 
 class Workout extends Eloquent {
-	protected $fillable = array('metric', 'amount', 'start', 'duration', 'notes');
+	protected $fillable = array('metric', 'amount', 'duration', 'notes');
 
   public function user() {
     return $this->belongsTo('User');
