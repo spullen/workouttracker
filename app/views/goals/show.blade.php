@@ -13,6 +13,10 @@
 @section('content')
 <div class="row">
   <div class="col-md-6">
+    @if($goal->accomplished_date)
+      <div class="alert alert-success">Woot! You did it! Accomplished on {{ $goal->accomplished_date }}</div>
+    @endif
+
     <dl>
       <dt>Activity Type</dt>
       <dd>{{ $goal->activity->name }}</dd>
