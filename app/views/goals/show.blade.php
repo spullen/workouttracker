@@ -2,7 +2,7 @@
 
 @section('header')
 <div class="page-header">
-  <h1>{{{ $goal->title }}}</h1>
+  <h1>{{{ $goal->title }}} @unless($goal->accomplished_date)({{ $goal->percent_accomplished }}% to goal)@endif</h1>
   <div>
     <a href="{{ URL::route('goals.edit', array($goal->id)) }}" class="btn btn-info">Edit</a>
     <a href="{{ URL::route('goals.destroy', array($goal->id)) }}" class="btn btn-danger" data-method="delete" data-confirm="Are you sure you want to delete workout?">Delete</a> 
@@ -20,15 +20,17 @@
       <dt>Metric</dt>
       <dd>{{ $goal->metric }}</dd>
 
+      <dt>Current Amount</dt>
+      <dd>{{ $goal->current_amount }}</dd>
+
       <dt>Target Amount</dt>
-      <dd>{{ $goal->targetAmount }}</dd>
+      <dd>{{ $goal->target_amount }}</dd>
 
       <dt>Target Date</dt>
-      <dd>{{ $goal->targetDate }}</dd>
-
-      <dt>Current Amount</dt>
-      <dd>{{ $goal->currentAmount }}</dd>
+      <dd>{{ $goal->target_date }}</dd>
     </dl>
+
+    <a href="{{ URL::route('workouts.create') }}">Log workout</a>
   </div>
 </div>
 

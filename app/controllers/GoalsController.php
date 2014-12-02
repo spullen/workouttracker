@@ -52,6 +52,7 @@ class GoalsController extends \BaseController {
 
 	public function show($id) {
 		$goal = Goal::find($id);
+		$workouts = $goal->workouts;
 		return View::make('goals.show')
 							->with('goal', $goal)
 							->with('workouts', $workouts);
