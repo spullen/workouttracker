@@ -5,7 +5,7 @@
   <h1>{{{ $goal->title }}} @unless($goal->accomplished_date)({{ $goal->percent_accomplished }}% to goal)@endif</h1>
   <div>
     <a href="{{ URL::route('goals.edit', array($goal->id)) }}" class="btn btn-info">Edit</a>
-    <a href="{{ URL::route('goals.destroy', array($goal->id)) }}" class="btn btn-danger" data-method="delete" data-confirm="Are you sure you want to delete workout?">Delete</a> 
+    <a href="{{ URL::route('goals.destroy', array($goal->id)) }}" class="btn btn-danger" data-method="delete" data-confirm="Are you sure you want to delete this goal?">Delete</a> 
   </div>
 </div>
 @stop
