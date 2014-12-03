@@ -40,7 +40,7 @@
   <script src="{{ asset('js/jquery_ujs.js') }}"></script>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/moment.js') }}"></script>
-  <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+  <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
   <script src="{{ asset('js/application.js') }}"></script>
 @show
 </body>

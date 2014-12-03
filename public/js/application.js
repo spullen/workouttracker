@@ -2,6 +2,7 @@ $(function() {
   $('.datetimepicker').datetimepicker();
 
   $('.datepicker').datetimepicker({
-    pickTime: false
+    pickTime: false,
+    dateFormat: 'YYYY-MM-DD'
   });
 });
