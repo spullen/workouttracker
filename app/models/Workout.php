@@ -12,6 +12,6 @@ class Workout extends Eloquent {
   }
 
   public function goals() {
-    return $this->belongsToMany('Goal', 'goal_workouts', 'goal_id', 'workout_id');
+    return $this->belongsToMany('Goal', 'goal_workouts', 'workout_id', 'goal_id');
   }
 }

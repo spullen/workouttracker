@@ -101,6 +101,21 @@ class WorkoutsController extends \BaseController {
 			$workout->amount = $data['amount'];
 			$workout->duration = $data['duration'];
 			$workout->notes = $data['notes'];
+
+			// update the workout's goals' current amount if the amount has changed
+			if($workout->isDirty('amount')) {
+				$originalAmount = $workout->getOriginal('amount');
+
+				$goals = $workout->goals()->get();
+
+				foreach($goals as $goal) {
+					$goal->current_amount -= $originalAmount;
+					$goal->current_amount += $workout->amount;
+					$goal->determineAccomplishedState();
+					$goal->save();		
+				}
+			}
+			
 			$workout->save();
 
 			Session::flash('message', 'Successfully updated workout!');
@@ -112,6 +127,18 @@ class WorkoutsController extends \BaseController {
 		$workout = Workout::find($id);
 
 		$this->authorize('delete', $workout);
+
+		// remove the amount from all of the goals
+		$goals = $workout->goals()->get();
+
+		foreach($goals as $goal) {
+			$goal->current_amount -= $workout->amount;
+			$goal->determineAccomplishedState();
+			$goal->save();
+
+			// detach from workout (the cascase delete should get this, but for good measure)
+			$goal->workouts()->detach($workout->id);
+		}
 
 		$workout->delete();
 
