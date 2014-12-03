@@ -21,6 +21,7 @@ Route::post('login', 'SessionController@store');
 Route::delete('logout', 'SessionController@destroy');
 
 Route::group(array('before' => 'auth'), function() {
+  Route::get('dashboard', 'DashboardController@index');
   Route::resource('workouts', 'WorkoutsController');
   Route::resource('goals', 'GoalsController');
 });

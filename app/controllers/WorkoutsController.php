@@ -45,6 +45,9 @@ class WorkoutsController extends \BaseController {
 			$workout->notes = $data['notes'];
 			$workout->save();
 
+			// find all active goals for user with activity and metric
+			//$goals = 
+
 			Session::flash('message', 'Successfully logged workout!');
 			return Redirect::action('workouts.index');
 		}

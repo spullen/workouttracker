@@ -11,7 +11,7 @@ class SessionController extends BaseController {
     $remember = Input::has('remember');
     if(Auth::attempt($credentials, $remember)) {
       Session::flash('message', 'Successfully logged in.');
-      return Redirect::intended('/');
+      return Redirect::intended('/dashboard');
     }
     Session::flash('alert', 'Invalid email/password combination.');
     return Redirect::to('/login');
