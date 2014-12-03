@@ -63,6 +63,7 @@ class GoalsController extends \BaseController {
 
 	public function edit($id) {
 		$goal = Goal::find($id);
+		$this->authorize('update', $goal);
 		return View::make('goals.edit')->with('goal', $goal);
 	}
 
@@ -70,6 +71,8 @@ class GoalsController extends \BaseController {
 		$data = Input::only('title', 'target_amount', 'target_date');
 
 		$goal = Goal::find($id);
+
+		$this->authorize('update', $goal);
 
 		$rules = array(
 			'title' => array('required'),
@@ -96,6 +99,9 @@ class GoalsController extends \BaseController {
 
 	public function destroy($id) {
 		$goal = Goal::find($id);
+		
+		$this->authorize('delete', $goal);
+
 		$goal->delete();
 
 		Session::flash('message', 'Successfully deleted goal.');

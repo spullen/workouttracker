@@ -55,11 +55,13 @@ class WorkoutsController extends \BaseController {
 
 	public function show($id) {
 		$workout = Workout::find($id);
+		$this->authorize('read', $workout);
 		return View::make('workouts.show')->with('workout', $workout);
 	}
 
 	public function edit($id) {
 		$workout = Workout::find($id);
+		$this->authorize('update', $workout);
 		return View::make('workouts.edit')->with('workout', $workout);
 	}
 
@@ -67,6 +69,8 @@ class WorkoutsController extends \BaseController {
 		$data = Input::only('amount', 'duration', 'notes');
 
 		$workout = Workout::find($id);
+
+		$this->authorize('update', $workout);
 
 		$rules = array(
 			'amount' => array('required', 'numeric', 'min:0.01'),
@@ -92,6 +96,9 @@ class WorkoutsController extends \BaseController {
 
 	public function destroy($id) {
 		$workout = Workout::find($id);
+
+		$this->authorize('delete', $workout);
+
 		$workout->delete();
 
 		Session::flash('message', 'Successfully deleted workout.');
