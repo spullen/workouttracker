@@ -52,6 +52,9 @@ class GoalsController extends \BaseController {
 
 	public function show($id) {
 		$goal = Goal::find($id);
+
+		$this->authorize('read', $goal);
+
 		$workouts = $goal->workouts;
 		return View::make('goals.show')
 							->with('goal', $goal)
