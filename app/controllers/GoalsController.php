@@ -90,6 +90,10 @@ class GoalsController extends \BaseController {
 			$goal->title = $data['title'];
 			$goal->target_amount = $data['target_amount'];
 			$goal->target_date = $data['target_date'];
+
+			// determine if the goal's accomplished state has changed
+			$goal->determineAccomplishedState();
+
 			$goal->save();
 
 			Session::flash('message', 'Successfully updated goal!');
@@ -102,6 +106,7 @@ class GoalsController extends \BaseController {
 		
 		$this->authorize('delete', $goal);
 
+		$goal->workouts()->detach();
 		$goal->delete();
 
 		Session::flash('message', 'Successfully deleted goal.');
