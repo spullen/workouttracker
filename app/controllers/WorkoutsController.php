@@ -46,7 +46,21 @@ class WorkoutsController extends \BaseController {
 			$workout->save();
 
 			// find all active goals for user with activity and metric
-			//$goals = 
+			$goals = Goal::where('user_id', '=', Auth::user()->id)
+											->where('activity_id', '=', $workout->activity_id)
+											->where('metric', '=', $workout->metric)
+											->whereNull('accomplished_date')
+											->get();
+
+			foreach($goals as $goal) {
+				// create the goal_workouts entry
+				$goal->workouts()->attach($workout->id);
+
+				// update the current amount and determine the accomplished state of the goal
+				$goal->current_amount += $workout->amount;
+				$goal->determineAccomplishedState();
+				$goal->save();
+			}
 
 			Session::flash('message', 'Successfully logged workout!');
 			return Redirect::action('workouts.index');

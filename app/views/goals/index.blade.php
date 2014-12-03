@@ -30,10 +30,10 @@
             <td>{{ $goal->target_amount }}</td>
             <td>{{ $goal->target_date }}</td>
             <td>
-              @if($goal->accomplished_date)
+              @if(isset($goal->accomplished_date))
                 Accomplished on: {{ $goal->accomplished_date }}! Woot!
               @else
-                {{ $goal->percent_accomplished }}%
+                {{ $goal->percentAccomplished() }}%
               @endif
             </td>
           </tr>

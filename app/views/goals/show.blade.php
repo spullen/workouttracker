@@ -17,8 +17,8 @@
       <div class="alert alert-success">Woot! You did it! Accomplished on {{ $goal->accomplished_date }}</div>
     @else
       <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="{{ $goal->percent_accomplished }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $goal->percent_accomplished }}%;">
-          {{ $goal->percent_accomplished }}%
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{ $goal->percentAccomplished() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $goal->percentAccomplished() }}%;">
+          {{ $goal->percentAccomplished() }}%
         </div>
       </div>
 

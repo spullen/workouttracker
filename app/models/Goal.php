@@ -15,11 +15,30 @@ class Goal extends Eloquent {
     return $this->belongsToMany('Workout', 'goal_workouts', 'goal_id', 'workout_id');
   }
 
-  public function getPercentAccomplishedAttribute() {
-    $percent = (int)($this->current_amount / $this->target_amount) * 100;
+  public function percentAccomplished() {
+    $percent = ($this->current_amount / $this->target_amount) * 100;
     if($percent > 100) {
       $percent = 100;
     }
-    return $percent;
+    return round($percent, 2);
+  }
+
+  /*
+   * Determines the accomplished state.
+   *
+   * If accomplished date is null and the current amount is greater or equal to 
+   * the target amount then the accomplished date is set to the current date.
+   *
+   * If the accomplished date is not null and the current amount falls below the
+   * target amount nullify the accomplished date (this is for the case when a workout or 
+   * goal is edited)
+   * 
+   */
+  public function determineAccomplishedState() {
+    if(!isset($this->accomplished_date) && $this->current_amount >= $this->target_amount) {
+      $this->accomplished_date = Carbon::now()->toDateString();
+    } else if(isset($this->accomplished_date) && $this->current_amount < $this->target_amount) {
+      $this->accomplished_date = null;
+    }
   }
 }
