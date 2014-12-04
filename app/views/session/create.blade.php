@@ -1,8 +1,14 @@
 @extends('layouts.main')
 
-@section('content')
-  <h2>Login</h2>
+@section('header')
+<div class="container">
+  <div class="page-header">
+    <h1>Login</h1>
+  </div>
+</div>
+@stop
 
+@section('content')
   <form action="{{ action('SessionController@store') }}" method="POST">
     {{ Form::token() }}
     

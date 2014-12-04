@@ -1,5 +1,13 @@
 @extends('layouts.main')
 
+@section('header')
+<div class="container">
+  <div class="page-header">
+    <h1>Log Workout</h1>
+  </div>
+</div>
+@stop
+
 @section('content')
   {{ Form::model($workout, ['method' => 'post', 'action' => 'WorkoutsController@store', 'class' => 'form-horizontal']) }}
     <div class="form-group {{ $errors->has('activity_id') ? 'has-error' : '' }}">

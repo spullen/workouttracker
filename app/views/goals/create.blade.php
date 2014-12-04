@@ -1,5 +1,13 @@
 @extends('layouts.main')
 
+@section('header')
+<div class="container">
+  <div class="page-header">
+    <h1>Create Goal</h1>
+  </div>
+</div>
+@stop
+
 @section('content')
   {{ Form::model($goal, ['method' => 'post', 'action' => 'GoalsController@store', 'class' => 'form-horizontal']) }}
     <div class="form-group {{ $errors->has('activity_id') ? 'has-error' : '' }}">

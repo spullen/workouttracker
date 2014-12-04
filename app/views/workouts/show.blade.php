@@ -3,10 +3,14 @@
 @section('header')
 <div class="page-header">
   <h1>{{ $workout->activity->name }}</h1>
+  @if(Authority::can('update', $workout))
   <div>
     <a href="{{ URL::route('workouts.edit', array($workout->id)) }}" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a>
     <a href="{{ URL::route('workouts.destroy', array($workout->id)) }}" class="btn btn-danger" data-method="delete" data-confirm="Are you sure you want to delete workout?"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</a> 
   </div>
+  @else
+  <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> You cannot edit a workout after 24 hours.</p>
+  @endif
 </div>
 @stop
 

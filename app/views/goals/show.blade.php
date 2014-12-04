@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-12">
     @if($goal->accomplished_date)
-      <div class="alert alert-success">Woot! You did it! Accomplished on {{ $goal->accomplished_date }}</div>
+      <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> Woot! You did it! Accomplished on {{ $goal->accomplished_date }}</div>
     @else
       <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="{{ $goal->percentAccomplished() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $goal->percentAccomplished() }}%;">

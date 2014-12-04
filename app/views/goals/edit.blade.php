@@ -1,5 +1,13 @@
 @extends('layouts.main')
 
+@section('header')
+<div class="container">
+  <div class="page-header">
+    <h1>Edit Goal</h1>
+  </div>
+</div>
+@stop
+
 @section('content')
   {{ Form::model($goal, ['method' => 'put', 'action' => ['GoalsController@update', $goal->id], 'class' => 'form-horizontal']) }}
     <div class="form-group">

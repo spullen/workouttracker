@@ -1,10 +1,14 @@
 @extends('layouts.main')
 
-@section('content')
+@section('header')
+<div class="container">
   <div class="page-header">
-    <h1>Workout List</h1>
+    <h1>Workouts</h1>
   </div>
+</div>
+@stop
 
+@section('content')
   <p><a href="{{ URL::route('workouts.create') }}">Log workout</a></p>
 
   @if(count($workouts))
