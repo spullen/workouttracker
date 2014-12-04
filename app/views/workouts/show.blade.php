@@ -24,8 +24,10 @@
       <dd>{{ $workout->duration }} minutes</dd>
     </dl>
 
+    @if($workout->notes)
     <h4>Notes:</h4>
     <p>{{{ $workout->notes }}}<p>
+    @endif
   </div>
 </div>
 @stop
