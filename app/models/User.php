@@ -20,6 +20,34 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     return $this->hasMany('Goal');
   }
 
+  public function activeGoals() {
+    return $this->goals()
+                ->with('activity')
+                ->whereNull('accomplished_date')
+                ->orderBy('target_date', 'asc')
+                ->get();
+  }
+
+  public function recentlyAccomplishedGoals() {
+    $now = Carbon::now();
+    $startWeek = $now->subWeek()->toDateString();
+    $endWeek = $now->tomorrow()->toDateString();
+    return $this->goals()
+                ->with('activity')
+                ->whereNotNull('accomplished_date')
+                ->whereBetween('accomplished_date', array($startWeek, $endWeek))
+                ->orderBy('accomplished_date', 'desc')
+                ->get();
+  }
+
+  public function recentlyLoggedWorkouts() {
+    return $this->workouts()
+                ->with('activity')
+                ->orderBy('created_at', 'desc')
+                ->take(25)
+                ->get();
+  }
+
 	public function getNameAttribute() {
 		return $this->first_name . ' ' . $this->last_name;
 	}
