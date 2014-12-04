@@ -10,6 +10,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <a class="btn btn-info" href="{{ URL::route('workouts.create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Log Workout</a>
+      <a class="btn btn-info" href="{{ URL::route('goals.create') }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Create Goal</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <h2>Goals</h2>
 
       @if(count($activeGoals))
@@ -48,7 +54,6 @@
             @endforeach
           </tbody>
         </table>
-        <p><a href="{{ URL::route('goals.index') }}">View All</a><p>
       @else
         <p>
           You currently don't have any goals to accomplish :(
@@ -94,6 +99,8 @@
           @endforeach
         </tbody>
       </table>
+
+      <p><a href="{{ URL::route('goals.index') }}">View All</a><p>
     </div>
   </div>
   @endif

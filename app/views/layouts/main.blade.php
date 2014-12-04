@@ -28,10 +28,10 @@
 <div class="container">
   @yield('header')
   @if(Session::has('message'))
-    <div>{{ Session::get('message') }}</div>
+    <div class="alert alert-success">{{ Session::get('message') }}</div>
   @endif
   @if(Session::has('alert'))
-    <div>{{ Session::get('alert') }}</div>
+    <div class="alert alert-danger">{{ Session::get('alert') }}</div>
   @endif
   @yield('content')
 </div>
