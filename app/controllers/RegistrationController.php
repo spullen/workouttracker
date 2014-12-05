@@ -30,7 +30,7 @@ class RegistrationController extends BaseController {
 
       Session::flash('message', 'Successfully signed up!');
 
-      return Redirect::to('/');
+      return Redirect::to('/dashboard');
     }
   }
 
