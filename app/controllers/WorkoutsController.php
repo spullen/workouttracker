@@ -73,19 +73,8 @@ class WorkoutsController extends \BaseController {
 
 		$this->authorize('delete', $workout);
 
-		// remove the amount from all of the goals
-		$goals = $workout->goals()->get();
-
-		foreach($goals as $goal) {
-			$goal->current_amount -= $workout->amount;
-			$goal->determineAccomplishedState();
-			$goal->save();
-
-			// detach from workout (the cascase delete should get this, but for good measure)
-			$goal->workouts()->detach($workout->id);
-		}
-
-		$workout->delete();
+		$workoutDestroy = new WorkoutDestroyService($workout);
+		$workoutDestroy->perform();
 
 		Session::flash('message', 'Successfully deleted workout.');
 		return Redirect::action('workouts.index');
