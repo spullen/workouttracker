@@ -9,46 +9,48 @@
 @stop
 
 @section('content')
-  <form action="{{ action('register.store') }}" method="POST">
+  <form action="{{ action('register.store') }}" method="POST" class="form-horizontal">
     {{ Form::token() }}
     
     <div class="form-group">
-      {{ Form::label('first_name', 'First name') }}
-      <div>
-        {{ Form::text('first_name', Input::get('first_name')) }}
+      {{ Form::label('first_name', 'First name', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
+        {{ Form::text('first_name', Input::get('first_name'), array('class' => 'form-control')) }}
         {{ $errors->first('first_name', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     <div class="form-group">
-      {{ Form::label('last_name', 'Last name') }}
-      <div>
-        {{ Form::text('last_name', Input::get('last_name')) }}
+      {{ Form::label('last_name', 'Last name', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
+        {{ Form::text('last_name', Input::get('last_name'), array('class' => 'form-control')) }}
         {{ $errors->first('last_name', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     <div class="form-group">
-      {{ Form::label('email', 'Email') }}
-      <div>
-        {{ Form::text('email', Input::get('email')) }}
+      {{ Form::label('email', 'Email', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
+        {{ Form::text('email', Input::get('email'), array('class' => 'form-control')) }}
         {{ $errors->first('email', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     <div class="form-group">
-      {{ Form::label('password', 'Password') }}
-      <div>
-        {{ Form::password('password') }}
+      {{ Form::label('password', 'Password', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
+        {{ Form::password('password', array('class' => 'form-control')) }}
         {{ $errors->first('password', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     <div class="form-group">
-      {{ Form::label('password_confirmation', 'Password confirmation') }}
-      <div>
-        {{ Form::password('password_confirmation') }}
+      {{ Form::label('password_confirmation', 'Password confirmation', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
+        {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
         {{ $errors->first('password_confirmation', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     <div class="form-group">
-      {{ Form::submit('Sign up') }}
+      <div class="col-sm-offset-2 col-sm-10">
+        {{ Form::submit('Sign Up', array('class' => 'btn btn-primary')) }}
+      </div>
     </div>
   </form>
 @stop

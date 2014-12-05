@@ -34,7 +34,7 @@
       <ul class="nav navbar-nav navbar-right">
         @if(!Auth::check())
           <li><a href="{{ action('register.create') }}">Sign up</a></li>
-          <li><a class="btn btn-default navbar-btn" href="{{ url('login') }}">Login</a></li>
+          <li><a href="{{ url('login') }}">Login</a></li>
         @else
           <li class="navbar-text">Hello, {{ Auth::user()->name }}</li>
           <li><a href="{{ url('logout') }}" data-method="delete">Logout</a></li>
@@ -44,13 +44,13 @@
   </div>
 </nav>
 <div class="container">
-  @yield('header')
   @if(Session::has('message'))
     <div class="alert alert-success">{{ Session::get('message') }}</div>
   @endif
   @if(Session::has('alert'))
     <div class="alert alert-danger">{{ Session::get('alert') }}</div>
   @endif
+  @yield('header')
   @yield('content')
 </div>
 @section('javascripts')

@@ -47,22 +47,29 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
-App::error(function(Exception $exception, $code)
-{
+App::error(function(Exception $exception, $code) {
 	Log::error($exception);
 });
 
 App::error(function(\Illuminate\Session\TokenMismatchException $exception) {
   Log::error($exception);
   Session::flash('alert', 'Token Mismatch');
-  return Redirect::to('/');
+  if(Auth::check()) {
+    return Redirect::to('/dashboard');
+  } else {
+    return Redirect::to('/');
+  }
 });
 
 App::error(function (Efficiently\AuthorityController\Exceptions\AccessDenied $e, $code, $fromConsole) {
   $message = $e->getMessage();
   Log::error('Access denied! ' . $message);
   Session::flash('alert', $message);
-  return Redirect::to('/dashboard');
+  if(Auth::check()) {
+    return Redirect::to('/dashboard');
+  } else {
+    return Redirect::to('/');
+  }
 });
 
 /*
