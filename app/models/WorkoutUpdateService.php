@@ -23,7 +23,7 @@ class WorkoutUpdateService {
     return !$this->validator->fails();
   }
 
-  public function update() {
+  public function perform() {
     $workout = $this->workout;
     $data = $this->data;
 

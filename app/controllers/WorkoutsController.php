@@ -29,7 +29,7 @@ class WorkoutsController extends \BaseController {
 						->withInput(Input::all());
 		}
 
-		$workoutCreate->save();
+		$workoutCreate->perform();
 
 		Session::flash('message', 'Successfully logged workout!');
 		return Redirect::action('workouts.index');
@@ -57,12 +57,12 @@ class WorkoutsController extends \BaseController {
 		$workoutUpdate = new WorkoutUpdateService($workout, $data);
 
 		if(!$workoutUpdate->valid()) {
-			return Redirect::action('workouts.create')
+			return Redirect::action('workouts.edit')
 						->withErrors($workoutUpdate->errors())
 						->withInput(Input::all());
 		}
 
-		$workoutUpdate->update();
+		$workoutUpdate->perform();
 
 		Session::flash('message', 'Successfully updated workout!');
 		return Redirect::action('workouts.index');

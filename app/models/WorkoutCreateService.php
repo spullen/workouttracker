@@ -27,7 +27,7 @@ class WorkoutCreateService {
     return !$this->validator->fails();
   }
 
-  public function save() {
+  public function perform() {
     $workout = $this->workout;
     $data = $this->data;
 
