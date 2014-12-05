@@ -59,31 +59,18 @@ class GoalsController extends \BaseController {
 
 		$this->authorize('update', $goal);
 
-		$rules = array(
-			'title' => array('required'),
-			'target_amount' => array('required', 'numeric', 'min:0.01'),
-			'target_date' => array('required', 'regex:/\d{4}-\d{1,2}-\d{1,2}/', 'date_format:Y-m-d', 'after:' . Carbon::yesterday('US/Eastern')->toDateString())
-		);
+		$goalUpdate = new GoalUpdateService($goal, $data);
 
-		$validator = Validator::make($data, $rules);
-
-		if($validator->fails()) {
+		if(!$goalUpdate->valid()) {
 			return Redirect::action('goals.edit', array($id))
-							->withErrors($validator)
+							->withErrors($goalUpdate->errors())
 							->withInput(Input::all());
-		} else {
-			$goal->title = $data['title'];
-			$goal->target_amount = $data['target_amount'];
-			$goal->target_date = $data['target_date'];
-
-			// determine if the goal's accomplished state has changed
-			$goal->determineAccomplishedState();
-
-			$goal->save();
-
-			Session::flash('message', 'Successfully updated goal!');
-			return Redirect::action('goals.index');
 		}
+
+		$goalUpdate->perform();
+
+		Session::flash('message', 'Successfully updated goal!');
+		return Redirect::action('goals.index');
 	}
 
 	public function destroy($id) {
