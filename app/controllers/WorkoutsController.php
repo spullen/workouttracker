@@ -57,7 +57,7 @@ class WorkoutsController extends \BaseController {
 		$workoutUpdate = new WorkoutUpdateService($workout, $data);
 
 		if(!$workoutUpdate->valid()) {
-			return Redirect::action('workouts.edit')
+			return Redirect::action('workouts.edit', array($id))
 						->withErrors($workoutUpdate->errors())
 						->withInput(Input::all());
 		}
