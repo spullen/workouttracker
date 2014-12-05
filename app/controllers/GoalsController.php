@@ -21,33 +21,18 @@ class GoalsController extends \BaseController {
 	public function store() {
 		$data = Input::only('title', 'activity_id', 'metric', 'target_amount', 'target_date');
 
-		$goal = new Goal($data);
+		$goalCreate = new GoalCreateService(Auth::user(), $data);
 
-		$rules = array(
-			'activity_id' => array('required', 'numeric', 'exists:activities,id'),
-			'metric' => array('required', 'in:Distance,Reps,Count'),
-			'title' => array('required'),
-			'target_amount' => array('required', 'numeric', 'min:0.01'),
-			'target_date' => array('required', 'regex:/\d{4}-\d{1,2}-\d{1,2}/', 'date_format:Y-m-d', 'after:' . Carbon::yesterday('US/Eastern')->toDateString())
-		);
-
-		$validator = Validator::make($data, $rules);
-
-		if($validator->fails()) {
+		if(!$goalCreate->valid()) {
 			return Redirect::action('goals.create')
-							->withErrors($validator)
+							->withErrors($goalCreate->errors())
 							->withInput(Input::all());
-		} else {
-			$goal->user()->associate(Auth::user());
-			$goal->activity_id = $data['activity_id'];
-			$goal->metric = $data['metric'];
-			$goal->target_amount = $data['target_amount'];
-			$goal->target_date = $data['target_date'];
-			$goal->save();
-
-			Session::flash('message', 'Successfully logged goal!');
-			return Redirect::action('goals.index');
 		}
+
+		$goalCreate->perform();
+
+		Session::flash('message', 'Successfully logged goal!');
+		return Redirect::action('goals.index');
 	}
 
 	public function show($id) {
@@ -83,7 +68,7 @@ class GoalsController extends \BaseController {
 		$validator = Validator::make($data, $rules);
 
 		if($validator->fails()) {
-			return Redirect::action('goals.edit')
+			return Redirect::action('goals.edit', array($id))
 							->withErrors($validator)
 							->withInput(Input::all());
 		} else {
