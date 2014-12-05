@@ -17,14 +17,14 @@
         </h2>
 
         @if(Auth::check())
-        <div>
+        <h3>
           <a class="btn btn-success btn-lg" href="{{ action('DashboardController@index') }}">View Dashboard</a>
-        </div>
+        </h3>
         @else
-        <h2>
+        <h3>
           <a class="btn btn-primary btn-lg" href="{{ action('register.create') }}">Create Account</a>, or 
           <a class="btn btn-success btn-lg" href="{{ url('login') }}">Login</a> if you already have an accout.
-        </h2>
+        </h3>
         @endif
       </div>
     </div>
