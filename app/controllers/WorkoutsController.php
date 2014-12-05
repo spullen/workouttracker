@@ -46,11 +46,11 @@ class WorkoutsController extends \BaseController {
 			$workout->save();
 
 			// find all active goals for user with activity and metric
-			$goals = Goal::where('user_id', '=', Auth::user()->id)
-											->where('activity_id', '=', $workout->activity_id)
-											->where('metric', '=', $workout->metric)
-											->whereNull('accomplished_date')
-											->get();
+			$goals = Auth::user()->goals()
+													 ->where('activity_id', '=', $workout->activity_id)
+													 ->where('metric', '=', $workout->metric)
+													 ->whereNull('accomplished_date')
+													 ->get();
 
 			foreach($goals as $goal) {
 				// create the goal_workouts entry
