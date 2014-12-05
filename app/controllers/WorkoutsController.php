@@ -54,41 +54,18 @@ class WorkoutsController extends \BaseController {
 
 		$this->authorize('update', $workout);
 
-		$rules = array(
-			'amount' => array('required', 'numeric', 'min:0.01'),
-			'duration' => array('required', 'numeric', 'min:0.01')
-		);
+		$workoutUpdate = new WorkoutUpdateService($workout, $data);
 
-		$validator = Validator::make($data, $rules);
-
-		if($validator->fails()) {
-			return Redirect::action('workouts.edit')
-							->withErrors($validator)
-							->withInput(Input::all());
-		} else {
-			$workout->amount = $data['amount'];
-			$workout->duration = $data['duration'];
-			$workout->notes = $data['notes'];
-
-			// update the workout's goals' current amount if the amount has changed
-			if($workout->isDirty('amount')) {
-				$originalAmount = $workout->getOriginal('amount');
-
-				$goals = $workout->goals()->get();
-
-				foreach($goals as $goal) {
-					$goal->current_amount -= $originalAmount;
-					$goal->current_amount += $workout->amount;
-					$goal->determineAccomplishedState();
-					$goal->save();		
-				}
-			}
-			
-			$workout->save();
-
-			Session::flash('message', 'Successfully updated workout!');
-			return Redirect::action('workouts.index');
+		if(!$workoutUpdate->valid()) {
+			return Redirect::action('workouts.create')
+						->withErrors($workoutUpdate->errors())
+						->withInput(Input::all());
 		}
+
+		$workoutUpdate->update();
+
+		Session::flash('message', 'Successfully updated workout!');
+		return Redirect::action('workouts.index');
 	}
 
 	public function destroy($id) {
