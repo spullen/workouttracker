@@ -1,0 +1,71 @@
+@-webkit-keyframes backgroundImage {
+  0%   { background-image: url('/images/running1.jpg'); }
+  25%  { background-image: url('/images/cycling1.jpg'); }
+  50%  { background-image: url('/images/running2.jpg'); }
+  75%  { background-image: url('/images/hiking1.jpg'); }
+  100% { background-image: url('/images/cycling2.jpg'); }
+}
+@-moz-keyframes backgroundImage {
+  0%   { background-image: url('/images/running1.jpg'); }
+  25%  { background-image: url('/images/cycling1.jpg'); }
+  50%  { background-image: url('/images/running2.jpg'); }
+  75%  { background-image: url('/images/hiking1.jpg'); }
+  100% { background-image: url('/images/cycling2.jpg'); }
+}
+@-o-keyframes backgroundImage {
+  0%   { background-image: url('/images/running1.jpg'); }
+  25%  { background-image: url('/images/cycling1.jpg'); }
+  50%  { background-image: url('/images/running2.jpg'); }
+  75%  { background-image: url('/images/hiking1.jpg'); }
+  100% { background-image: url('/images/cycling2.jpg'); }
+}
+@keyframes backgroundImage {
+  0%   { background-image: url('/images/running1.jpg'); }
+  25%  { background-image: url('/images/cycling1.jpg'); }
+  50%  { background-image: url('/images/running2.jpg'); }
+  75%  { background-image: url('/images/hiking1.jpg'); }
+  100% { background-image: url('/images/cycling2.jpg'); }
+}
+
+#main-wrapper {
+  height: 100vh;
+  background-image: url('/images/running1.jpg');
+  background-position: center top;
+  background-size: cover;
+  -webkit-animation: backgroundImage 60s 0s infinite;
+  -moz-animation:    backgroundImage 60s 0s infinite;
+  -o-animation:      backgroundImage 60s 0s infinite;
+  animation:         backgroundImage 60s 0s infinite;
+  z-index: -5;
+}
+
+#about {
+  position: relative;
+  display: block;
+  min-height: 66vh;
+  text-align: center;
+  padding: 2em;
+}
+
+#about::after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 2em;
+  z-index: 1;
+}
+
+#about-content {
+  position: relative;
+  z-index: 10;
+}
+
+#about-content h2 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

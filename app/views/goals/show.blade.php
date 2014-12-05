@@ -11,69 +11,70 @@
 @stop
 
 @section('content')
-<div class="row">
-  <div class="col-md-12">
-    @if($goal->accomplished_date)
-      <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> Woot! You did it! Accomplished on {{ $goal->accomplished_date }}</div>
-    @else
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="{{ $goal->percentAccomplished() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $goal->percentAccomplished() }}%;">
-          {{ $goal->percentAccomplished() }}%
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      @if($goal->accomplished_date)
+        <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span> Woot! You did it! Accomplished on {{ $goal->accomplished_date }}</div>
+      @else
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="{{ $goal->percentAccomplished() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $goal->percentAccomplished() }}%;">
+            {{ $goal->percentAccomplished() }}%
+          </div>
         </div>
-      </div>
 
-      <p>Go! Go! Go! You can do it!</p>
-      <p><a href="{{ URL::route('workouts.create') }}">Log workout</a></p>
-    @endif
+        <p>Go! Go! Go! You can do it!</p>
+        <p><a href="{{ URL::route('workouts.create') }}">Log workout</a></p>
+      @endif
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-6">
-    <dl>
-      <dt>Activity Type</dt>
-      <dd>{{ $goal->activity->name }}</dd>
+  <div class="row">
+    <div class="col-md-6">
+      <dl>
+        <dt>Activity Type</dt>
+        <dd>{{ $goal->activity->name }}</dd>
 
-      <dt>Metric</dt>
-      <dd>{{ $goal->metric }}</dd>
+        <dt>Metric</dt>
+        <dd>{{ $goal->metric }}</dd>
 
-      <dt>Current Amount</dt>
-      <dd>{{ $goal->current_amount }}</dd>
+        <dt>Current Amount</dt>
+        <dd>{{ $goal->current_amount }}</dd>
 
-      <dt>Target Amount</dt>
-      <dd>{{ $goal->target_amount }}</dd>
+        <dt>Target Amount</dt>
+        <dd>{{ $goal->target_amount }}</dd>
 
-      <dt>Target Date</dt>
-      <dd>{{ $goal->target_date }}</dd>
-    </dl>
+        <dt>Target Date</dt>
+        <dd>{{ $goal->target_date }}</dd>
+      </dl>
+    </div>
   </div>
-</div>
 
-@if(count($workouts))
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-bordered table-responsive">
-      <thead>
-        <tr>
-          <th>Activity</th>
-          <th>Metric</th>
-          <th>Amount</th>
-          <th>Duration (in minutes)</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($workouts as $workout)
+  @if(count($workouts))
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped table-bordered table-responsive">
+        <thead>
           <tr>
-            <td><a href="{{ URL::route('workouts.show', array($workout->id)) }}">{{ $workout->activity->name }}</a></td>
-            <td>{{ $workout->metric }}</td>
-            <td>{{ $workout->amount }}</td>
-            <td>{{ $workout->duration }}</td>
+            <th>Activity</th>
+            <th>Metric</th>
+            <th>Amount</th>
+            <th>Duration (in minutes)</th>
           </tr>
-        @endforeach
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          @foreach($workouts as $workout)
+            <tr>
+              <td><a href="{{ URL::route('workouts.show', array($workout->id)) }}">{{ $workout->activity->name }}</a></td>
+              <td>{{ $workout->metric }}</td>
+              <td>{{ $workout->amount }}</td>
+              <td>{{ $workout->duration }}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
   </div>
+  @endif
 </div>
-@endif
-
 @stop

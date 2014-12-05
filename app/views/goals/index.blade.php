@@ -9,6 +9,7 @@
 @stop
 
 @section('content')
+<div class="container">
   <p><a href="{{ URL::route('goals.create') }}">Create goal</a></p>
 
   @if(count($goals))
@@ -53,4 +54,5 @@
       You don't have any goals! Setting goals is a great way to get motivated so <a href="{{ URL::route('goals.create') }}">create one!</a>
     </p>
   @endif
+</div>
 @stop

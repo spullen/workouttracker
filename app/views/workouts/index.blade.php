@@ -9,6 +9,7 @@
 @stop
 
 @section('content')
+<div class="container">
   <p><a href="{{ URL::route('workouts.create') }}">Log workout</a></p>
 
   @if(count($workouts))
@@ -41,4 +42,5 @@
       You don't have any workouts logged! Get out and do something, then <a href="{{ URL::route('workouts.create') }}">log it!</a>
     </p>
   @endif
+</div>
 @stop

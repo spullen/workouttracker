@@ -9,6 +9,7 @@
 @stop
 
 @section('content')
+<div class="container">
   {{ Form::model($goal, ['method' => 'put', 'action' => ['GoalsController@update', $goal->id], 'class' => 'form-horizontal']) }}
     <div class="form-group">
       {{ Form::label('activity_id', 'Activity Type', array('class' => 'control-label col-md-2')) }}
@@ -29,4 +30,5 @@
       </div>
     </div>
   {{ Form::close() }}
+</div>
 @stop

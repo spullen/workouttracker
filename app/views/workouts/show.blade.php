@@ -15,23 +15,25 @@
 @stop
 
 @section('content')
-<div class="row">
-  <div class="col-md-6">
-    <dl>
-      <dt>Metric</dt>
-      <dd>{{ $workout->metric }}</dd>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <dl>
+        <dt>Metric</dt>
+        <dd>{{ $workout->metric }}</dd>
 
-      <dt>Amount</dt>
-      <dd>{{ $workout->amount }}</dd>
+        <dt>Amount</dt>
+        <dd>{{ $workout->amount }}</dd>
 
-      <dt>Duration</dt>
-      <dd>{{ $workout->duration }} minutes</dd>
-    </dl>
+        <dt>Duration</dt>
+        <dd>{{ $workout->duration }} minutes</dd>
+      </dl>
 
-    @if($workout->notes)
-    <h4>Notes:</h4>
-    <p>{{{ $workout->notes }}}<p>
-    @endif
+      @if($workout->notes)
+      <h4>Notes:</h4>
+      <p>{{{ $workout->notes }}}<p>
+      @endif
+    </div>
   </div>
 </div>
 @stop
