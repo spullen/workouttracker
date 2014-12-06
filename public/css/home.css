@@ -39,6 +39,16 @@
   z-index: -5;
 }
 
+@media (max-width: 768px) {
+  #main-wrapper {
+    background-image: none;
+    -webkit-animation: none;
+    -moz-animation: none;
+    -o-animation: none;
+    animation: none;
+  }
+}
+
 #about {
   position: relative;
   display: block;
