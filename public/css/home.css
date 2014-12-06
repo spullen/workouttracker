@@ -57,6 +57,10 @@
   padding: 2em;
 }
 
+#about h1 {
+  font-size: 64px;
+}
+
 #about::after {
   content: "";
   position: absolute;
