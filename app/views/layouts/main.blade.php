@@ -30,7 +30,7 @@
   <script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
   <script src="{{ asset('js/application.js') }}"></script>
 @show
-@if(App::environment() == "production")
+@if(App::environment('production'))
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
