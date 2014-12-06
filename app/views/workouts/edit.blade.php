@@ -26,7 +26,7 @@
     @include('workouts._form')
     <div class="form-group">
       <div class="col-md-offset-2 col-md-6">
-        {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
+        {{ Form::submit('Update', array('class' => 'btn btn-lg btn-primary')) }}
       </div>
     </div>
   {{ Form::close() }}

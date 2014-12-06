@@ -21,10 +21,10 @@ $(function() {
         var blankOption = data[''];
         delete data[''];
 
-        options.push("<option val=''>" + blankOption + "</option>");
+        options.push("<option value=''>" + blankOption + "</option>");
 
         $.each(data, function(id, name) {
-          options.push("<option val='" + id + "'>" + name + "</option>");
+          options.push("<option value='" + id + "'>" + name + "</option>");
         });
 
         $metricEl.html(options);

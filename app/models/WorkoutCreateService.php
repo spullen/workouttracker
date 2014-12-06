@@ -13,7 +13,7 @@ class WorkoutCreateService {
     $this->workout = new Workout($data);
     $this->validator = Validator::make($data, array(
       'activity_id' => array('required', 'numeric', 'exists:activities,id'),
-      'metric_id' => array('required', 'exists:metrics,id'),
+      'metric_id' => array('required', 'numeric', 'exists:metrics,id'),
       'amount' => array('required', 'numeric', 'min:0.01'),
       'duration' => array('required', 'numeric', 'min:0.01')
     ));

@@ -14,14 +14,14 @@
     <div class="form-group {{ $errors->has('activity_id') ? 'has-error' : '' }}">
       {{ Form::label('activity_id', 'Activity', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
-        {{ Form::select('activity_id', WorkoutHelpers::activities(), $goal->activity_id, array('class' => 'form-control')) }}
+        {{ Form::select('activity_id', WorkoutHelpers::activities(), Input::get('activity_id'), array('class' => 'form-control')) }}
         {{ $errors->first('activity_id', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     <div class="form-group {{ $errors->has('metric') ? 'has-error' : '' }}">
       {{ Form::label('metric_id', 'Metric', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
-        {{ Form::select('metric_id', WorkoutHelpers::metrics($goal->activity_id), $goal->metric_id, array('class' => 'form-control')) }}
+        {{ Form::select('metric_id', WorkoutHelpers::metrics(Input::get('activity_id')), Input::get('metric_id'), array('class' => 'form-control')) }}
         {{ $errors->first('metric_id', '<span class="help-block">:message</span>') }}
       </div>
     </div>

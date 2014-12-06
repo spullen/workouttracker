@@ -19,14 +19,15 @@ class WorkoutsController extends \BaseController {
 	}
 
 	public function store() {
-		$data = Input::only('activity_id', 'metric', 'amount', 'duration', 'notes');
+		$data = Input::only('activity_id', 'metric_id', 'amount', 'duration', 'notes');
 
 		$workoutCreate = new WorkoutCreateService(Auth::user(), $data);
 
 		if(!$workoutCreate->valid()) {
-			return Redirect::action('workouts.create')
+			return View::make('workouts.create')
 						->withErrors($workoutCreate->errors())
-						->withInput(Input::all());
+						->withInput(Input::all())
+						->with('workout', $workoutCreate->workout());
 		}
 
 		$workoutCreate->perform();
@@ -57,9 +58,10 @@ class WorkoutsController extends \BaseController {
 		$workoutUpdate = new WorkoutUpdateService($workout, $data);
 
 		if(!$workoutUpdate->valid()) {
-			return Redirect::action('workouts.edit', array($id))
+			return View::make('workouts.edit')
 						->withErrors($workoutUpdate->errors())
-						->withInput(Input::all());
+						->withInput(Input::all())
+						->with('workout', $workoutUpdate->workout());
 		}
 
 		$workoutUpdate->perform();

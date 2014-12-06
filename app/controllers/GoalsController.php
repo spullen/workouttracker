@@ -24,9 +24,10 @@ class GoalsController extends \BaseController {
 		$goalCreate = new GoalCreateService(Auth::user(), $data);
 
 		if(!$goalCreate->valid()) {
-			return Redirect::action('goals.create')
+			return View::make('goals.create')
 							->withErrors($goalCreate->errors())
-							->withInput(Input::all());
+							->withInput(Input::all())
+							->with('goal', $goalCreate->goal());
 		}
 
 		$goalCreate->perform();
@@ -62,9 +63,10 @@ class GoalsController extends \BaseController {
 		$goalUpdate = new GoalUpdateService($goal, $data);
 
 		if(!$goalUpdate->valid()) {
-			return Redirect::action('goals.edit', array($id))
+			return View::make('goals.edit')
 							->withErrors($goalUpdate->errors())
-							->withInput(Input::all());
+							->withInput(Input::all())
+							->with('goal', $goalUpdate->goal());
 		}
 
 		$goalUpdate->perform();
