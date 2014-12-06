@@ -31,7 +31,7 @@
 
       @if($workout->notes)
       <h4>Notes:</h4>
-      <p>{{{ $workout->notes }}}<p>
+      <p>{{ nl2br(e($workout->notes)) }}<p>
       @endif
     </div>
   </div>
