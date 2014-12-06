@@ -27,6 +27,12 @@ class Goal extends Eloquent {
     return round($percent, 2);
   }
 
+  public function overdue() {
+    $now = Carbon::now();
+    $target = new Carbon($this->target_date);
+    return $this->percentAccomplished() < 100.0 && $now->gt($target);
+  }
+
   /*
    * Determines the accomplished state.
    *

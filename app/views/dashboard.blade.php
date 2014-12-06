@@ -36,7 +36,7 @@
           </thead>
           <tbody>
             @foreach($activeGoals as $goal)
-              <tr>
+              <tr class="{{ $goal->overdue() ? 'warning' : '' }}">
                 <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->title }}</a></td>
                 <td>{{ $goal->activity->name }}</td>
                 <td>{{ $goal->metric->name }}</td>
