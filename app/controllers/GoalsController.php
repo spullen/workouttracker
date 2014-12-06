@@ -36,7 +36,7 @@ class GoalsController extends \BaseController {
 	}
 
 	public function show($id) {
-		$goal = Goal::find($id);
+		$goal = Goal::findOrFail($id);
 
 		$this->authorize('read', $goal);
 
@@ -47,7 +47,7 @@ class GoalsController extends \BaseController {
 	}
 
 	public function edit($id) {
-		$goal = Goal::find($id);
+		$goal = Goal::findOrFail($id);
 		$this->authorize('update', $goal);
 		return View::make('goals.edit')->with('goal', $goal);
 	}
@@ -55,7 +55,7 @@ class GoalsController extends \BaseController {
 	public function update($id) {
 		$data = Input::only('title', 'target_amount', 'target_date');
 
-		$goal = Goal::find($id);
+		$goal = Goal::findOrFail($id);
 
 		$this->authorize('update', $goal);
 
@@ -74,7 +74,7 @@ class GoalsController extends \BaseController {
 	}
 
 	public function destroy($id) {
-		$goal = Goal::find($id);
+		$goal = Goal::findOrFail($id);
 		
 		$this->authorize('delete', $goal);
 

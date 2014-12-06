@@ -36,13 +36,13 @@ class WorkoutsController extends \BaseController {
 	}
 
 	public function show($id) {
-		$workout = Workout::find($id);
+		$workout = Workout::findOrFail($id);
 		$this->authorize('read', $workout);
 		return View::make('workouts.show')->with('workout', $workout);
 	}
 
 	public function edit($id) {
-		$workout = Workout::find($id);
+		$workout = Workout::findOrFail($id);
 		$this->authorize('update', $workout);
 		return View::make('workouts.edit')->with('workout', $workout);
 	}
@@ -50,7 +50,7 @@ class WorkoutsController extends \BaseController {
 	public function update($id) {
 		$data = Input::only('amount', 'duration', 'notes');
 
-		$workout = Workout::find($id);
+		$workout = Workout::findOrFail($id);
 
 		$this->authorize('update', $workout);
 
@@ -69,7 +69,7 @@ class WorkoutsController extends \BaseController {
 	}
 
 	public function destroy($id) {
-		$workout = Workout::find($id);
+		$workout = Workout::findOrFail($id);
 
 		$this->authorize('delete', $workout);
 

@@ -51,6 +51,16 @@ App::error(function(Exception $exception, $code) {
 	Log::error($exception);
 });
 
+App::error(function(Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+    Log::error($e);
+    Session::flash('alert', 'Not Found');
+    if(Auth::check()) {
+      return Redirect::to('/dashboard');
+    } else {
+      return Redirect::to('/');
+    }
+});
+
 App::error(function(\Illuminate\Session\TokenMismatchException $exception) {
   Log::error($exception);
   Session::flash('alert', 'Token Mismatch');
