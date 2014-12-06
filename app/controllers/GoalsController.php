@@ -5,7 +5,7 @@ class GoalsController extends \BaseController {
 	public function index() {
 		$goals = Auth::user()
 									->goals()
-									->with('activity')
+									->with('activity', 'metric')
 									->orderBy('created_at', 'desc')
 									->paginate(25);
 
@@ -19,7 +19,7 @@ class GoalsController extends \BaseController {
 	}
 
 	public function store() {
-		$data = Input::only('title', 'activity_id', 'metric', 'target_amount', 'target_date');
+		$data = Input::only('title', 'activity_id', 'metric_id', 'target_amount', 'target_date');
 
 		$goalCreate = new GoalCreateService(Auth::user(), $data);
 

@@ -20,7 +20,7 @@
     <div class="form-group">
       {{ Form::label('metric', 'Metric', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
-        <span class="form-control" disabled>{{ $workout->metric }}</span>
+        <span class="form-control" disabled>{{ $workout->metric->name }}</span>
       </div>
     </div>
     @include('workouts._form')

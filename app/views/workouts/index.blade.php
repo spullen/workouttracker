@@ -26,7 +26,7 @@
         @foreach($workouts as $workout)
           <tr>
             <td><a href="{{ URL::route('workouts.show', array($workout->id)) }}">{{ $workout->activity->name }}</a></td>
-            <td>{{ $workout->metric }}</td>
+            <td>{{ $workout->metric->name }}</td>
             <td>{{ $workout->amount }}</td>
             <td>{{ $workout->duration }}</td>
           </tr>

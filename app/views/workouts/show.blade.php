@@ -20,7 +20,7 @@
     <div class="col-md-6">
       <dl>
         <dt>Metric</dt>
-        <dd>{{ $workout->metric }}</dd>
+        <dd>{{ $workout->metric->name }}</dd>
 
         <dt>Amount</dt>
         <dd>{{ $workout->amount }}</dd>

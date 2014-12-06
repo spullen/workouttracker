@@ -39,7 +39,7 @@
               <tr>
                 <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->title }}</a></td>
                 <td>{{ $goal->activity->name }}</td>
-                <td>{{ $goal->metric }}</td>
+                <td>{{ $goal->metric->name }}</td>
                 <td>{{ $goal->current_amount }}</td>
                 <td>{{ $goal->target_amount }}</td>
                 <td>{{ $goal->target_date }}</td>
@@ -91,7 +91,7 @@
               <tr>
                 <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->title }}</a></td>
                 <td>{{ $goal->activity->name }}</td>
-                <td>{{ $goal->metric }}</td>
+                <td>{{ $goal->metric->name }}</td>
                 <td>{{ $goal->current_amount }}</td>
                 <td>{{ $goal->target_amount }}</td>
                 <td>{{ $goal->target_date }}</td>
@@ -126,7 +126,7 @@
             @foreach($recentlyLoggedWorkouts as $workout)
               <tr>
                 <td><a href="{{ URL::route('workouts.show', array($workout->id)) }}">{{ $workout->activity->name }}</a></td>
-                <td>{{ $workout->metric }}</td>
+                <td>{{ $workout->metric->name }}</td>
                 <td>{{ $workout->amount }}</td>
                 <td>{{ $workout->duration }}</td>
               </tr>

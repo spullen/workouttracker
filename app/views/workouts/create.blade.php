@@ -12,17 +12,17 @@
 <div class="container">
   {{ Form::model($workout, ['method' => 'post', 'action' => 'WorkoutsController@store', 'class' => 'form-horizontal']) }}
     <div class="form-group {{ $errors->has('activity_id') ? 'has-error' : '' }}">
-      {{ Form::label('activity_id', 'Activity Type', array('class' => 'control-label col-md-2')) }}
+      {{ Form::label('activity_id', 'Activity', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
         {{ Form::select('activity_id', WorkoutHelpers::activities(), $workout->activity_id, array('class' => 'form-control')) }}
         {{ $errors->first('activity_id', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     <div class="form-group {{ $errors->has('metric') ? 'has-error' : '' }}">
-      {{ Form::label('metric', 'Metric', array('class' => 'control-label col-md-2')) }}
+      {{ Form::label('metric_id', 'Metric', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
-        {{ Form::select('metric', WorkoutHelpers::metrics(), $workout->metric, array('class' => 'form-control')) }}
-        {{ $errors->first('metric', '<span class="help-block">:message</span>') }}
+        {{ Form::select('metric_id', WorkoutHelpers::metrics($workout->activity_id), $workout->metric_id, array('class' => 'form-control')) }}
+        {{ $errors->first('metric_id', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     @include('workouts._form')

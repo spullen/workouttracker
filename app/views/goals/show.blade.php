@@ -36,7 +36,7 @@
         <dd>{{ $goal->activity->name }}</dd>
 
         <dt>Metric</dt>
-        <dd>{{ $goal->metric }}</dd>
+        <dd>{{ $goal->metric->name }}</dd>
 
         <dt>Current Amount</dt>
         <dd>{{ $goal->current_amount }}</dd>

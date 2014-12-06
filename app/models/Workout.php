@@ -11,6 +11,10 @@ class Workout extends Eloquent {
     return $this->belongsTo('Activity');
   }
 
+  public function metric() {
+    return $this->belongsTo('Metric');
+  }
+
   public function goals() {
     return $this->belongsToMany('Goal', 'goal_workouts', 'workout_id', 'goal_id');
   }

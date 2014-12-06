@@ -22,6 +22,9 @@ Route::delete('logout', 'SessionController@destroy');
 
 Route::group(array('before' => 'auth'), function() {
   Route::get('dashboard', 'DashboardController@index');
+
+  Route::get('activity_metrics/{id?}', 'ActivityMetricsController@index');
+
   Route::resource('workouts', 'WorkoutsController');
   Route::resource('goals', 'GoalsController');
 });

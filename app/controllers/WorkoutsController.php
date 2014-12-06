@@ -5,7 +5,7 @@ class WorkoutsController extends \BaseController {
 	public function index() {
 		$workouts = Auth::user()
 									->workouts()
-									->with('activity')
+									->with('activity', 'metric')
 									->orderBy('created_at', 'desc')
 									->paginate(25);
 

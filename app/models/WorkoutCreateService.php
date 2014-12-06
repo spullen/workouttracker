@@ -13,7 +13,7 @@ class WorkoutCreateService {
     $this->workout = new Workout($data);
     $this->validator = Validator::make($data, array(
       'activity_id' => array('required', 'numeric', 'exists:activities,id'),
-      'metric' => array('required', 'in:Distance,Reps,Count'),
+      'metric_id' => array('required', 'exists:metrics,id'),
       'amount' => array('required', 'numeric', 'min:0.01'),
       'duration' => array('required', 'numeric', 'min:0.01')
     ));
@@ -33,7 +33,7 @@ class WorkoutCreateService {
 
     $workout->user()->associate($this->user);
     $workout->activity_id = $data['activity_id'];
-    $workout->metric = $data['metric'];
+    $workout->metric_id = $data['metric_id'];
     $workout->amount = $data['amount'];
     $workout->duration = $data['duration'];
     $workout->notes = $data['notes'];
@@ -42,7 +42,7 @@ class WorkoutCreateService {
     // find all active goals for user with activity and metric
     $goals = $this->user->goals()
                         ->where('activity_id', '=', $workout->activity_id)
-                        ->where('metric', '=', $workout->metric)
+                        ->where('metric_id', '=', $workout->metric_id)
                         ->whereNull('accomplished_date')
                         ->get();
 
