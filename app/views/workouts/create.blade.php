@@ -18,7 +18,7 @@
         {{ $errors->first('activity_id', '<span class="help-block">:message</span>') }}
       </div>
     </div>
-    <div class="form-group {{ $errors->has('metric') ? 'has-error' : '' }}">
+    <div class="form-group {{ $errors->has('metric_id') ? 'has-error' : '' }}">
       {{ Form::label('metric_id', 'Metric', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
         {{ Form::select('metric_id', WorkoutHelpers::metrics(Input::get('activity_id')), Input::get('metric_id'), array('class' => 'form-control')) }}
