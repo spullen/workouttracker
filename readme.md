@@ -2,7 +2,7 @@
 
 [View Site](http://p4.scottpullen.me)
 
-[Demo]()
+[Demo](http://screencast.com/t/ffRzvefPN3QD)
 
 ## Description
 
@@ -28,7 +28,7 @@ These are the nice to haves (stretch goals for this application)
 	- Cheer your friends on
 	- Challenge friend's (goal++)
 - Charts displaying activity over time
-- Calorie calculator (given a workout the type and duration estimate the number of calories burned)
+- Calorie calculator (given a workout, the type, and duration estimate the number of calories burned)
 
 ## Resources
 - [jQuery](http://jquery.com)

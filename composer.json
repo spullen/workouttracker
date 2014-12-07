@@ -6,7 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"efficiently/authority-controller": "1.2.*"
+		"efficiently/authority-controller": "1.2.*",
+		"barryvdh/laravel-httpcache": "0.1.*"
 	},
 	"autoload": {
 		"classmap": [
