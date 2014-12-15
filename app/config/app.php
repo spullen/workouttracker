@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Efficiently\AuthorityController\AuthorityControllerServiceProvider',
 		'Barryvdh\HttpCache\ServiceProvider',
+		'Camroncade\Timezone\TimezoneServiceProvider',
 
 	),
 
