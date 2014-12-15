@@ -1,7 +1,7 @@
 <?php
 
 class Activity extends Eloquent {
-	protected $fillable = array('name');
+	protected $fillable = array('name', 'met');
 	public $timestamps = false;
 
   public function metrics() {
