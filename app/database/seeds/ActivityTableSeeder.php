@@ -8,6 +8,8 @@ class ActivityTableSeeder extends Seeder {
 		$steps = Metric::firstOrCreate(array('name' => 'Steps'));
 		$reps = Metric::firstOrCreate(array('name' => 'Reps'));
 		$count = Metric::firstOrCreate(array('name' => 'Count'));
+		$laps = Metric::firstOrCreate(array('name' => 'laps'));
+		$yards = Metric::firstOrCreate(array('name' => 'yards'));
 
 		// activities
 		$running = Activity::firstOrCreate(array('name' => 'Running'));
@@ -38,6 +40,10 @@ class ActivityTableSeeder extends Seeder {
 		$lifting = Activity::firstOrCreate(array('name' => 'Weight Lifting'));
 		$lifting->metrics()->attach($count);
 		$lifting->metrics()->attach($reps);
+
+		$swimming = Activity::firstOrCreate(array('name' => 'Swimming'));
+		$swimming->metrics()->attach($laps);
+		$swimming->metrics()->attach($yards);
 	}
 
 }
