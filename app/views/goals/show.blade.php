@@ -2,7 +2,7 @@
 
 @section('header')
 <div class="page-header">
-  <h1>{{{ $goal->title }}}</h1>
+  <h1>{{{ $goal->displayTitle() }}}</h1>
   <div>
     <a href="{{ URL::route('goals.edit', array($goal->id)) }}" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a>
     <a href="{{ URL::route('goals.destroy', array($goal->id)) }}" class="btn btn-danger" data-method="delete" data-confirm="Are you sure you want to delete this goal?"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</a> 

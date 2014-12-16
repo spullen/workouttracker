@@ -14,7 +14,6 @@ class GoalCreateService {
     $this->validator = Validator::make($data, array(
       'activity_id' => array('required', 'numeric', 'exists:activities,id'),
       'metric_id' => array('required', 'numeric', 'exists:metrics,id'),
-      'title' => array('required'),
       'target_amount' => array('required', 'numeric', 'min:0.01'),
       'target_date' => array('required', 'regex:/\d{4}-\d{1,2}-\d{1,2}/', 'date_format:Y-m-d', 'after:' . Carbon::yesterday('US/Eastern')->toDateString())
     ));
@@ -34,6 +33,7 @@ class GoalCreateService {
 
     $goal->user()->associate($this->user);
 
+    $goal->title = trim($data['title']);
     $goal->activity_id = $data['activity_id'];
     $goal->metric_id = $data['metric_id'];
     $goal->target_amount = $data['target_amount'];

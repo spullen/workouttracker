@@ -37,7 +37,7 @@
           <tbody>
             @foreach($activeGoals as $goal)
               <tr class="{{ $goal->overdue() ? 'warning' : '' }}">
-                <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->title }}</a></td>
+                <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->displayTitle() }}</a></td>
                 <td>{{ $goal->activity->name }}</td>
                 <td>{{ $goal->metric->name }}</td>
                 <td>{{ $goal->current_amount }}</td>
@@ -89,7 +89,7 @@
           @foreach($recentlyAccomplishedGoals as $goal)
             <tr>
               <tr>
-                <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->title }}</a></td>
+                <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->displayTitle() }}</a></td>
                 <td>{{ $goal->activity->name }}</td>
                 <td>{{ $goal->metric->name }}</td>
                 <td>{{ $goal->current_amount }}</td>

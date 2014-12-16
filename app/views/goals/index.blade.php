@@ -28,7 +28,7 @@
       <tbody>
         @foreach($goals as $goal)
           <tr>
-            <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->title }}</a></td>
+            <td><a href="{{ URL::route('goals.show', array($goal->id)) }}">{{ $goal->displayTitle() }}</a></td>
             <td>{{ $goal->activity->name }}</td>
             <td>{{ $goal->metric->name }}</td>
             <td>{{ $goal->current_amount }}</td>

@@ -19,6 +19,14 @@ class Goal extends Eloquent {
     return $this->belongsToMany('Workout', 'goal_workouts', 'goal_id', 'workout_id');
   }
 
+  public function displayTitle() {
+    if(empty($this->title)) {
+      return $this->activity->name . ' ' . $this->metric->name . ' - ' . $this->target_date;
+    } else {
+      return $this->title;
+    }
+  }
+
   public function percentAccomplished() {
     $percent = ($this->current_amount / $this->target_amount) * 100;
     if($percent > 100) {

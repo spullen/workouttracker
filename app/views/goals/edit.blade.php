@@ -11,6 +11,13 @@
 @section('content')
 <div class="container">
   {{ Form::model($goal, ['method' => 'put', 'action' => ['GoalsController@update', $goal->id], 'class' => 'form-horizontal']) }}
+    <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
+      {{ Form::label('title', 'Title', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
+        {{ Form::text('title', Input::get('title'), array('class' => 'form-control col-md-2')) }}
+        {{ $errors->first('title', '<span class="help-block">:message</span>') }}
+      </div>
+    </div>
     <div class="form-group">
       {{ Form::label('activity_id', 'Activity Type', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
