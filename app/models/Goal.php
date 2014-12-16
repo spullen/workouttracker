@@ -1,7 +1,7 @@
 <?php
 
 class Goal extends Eloquent {
-	protected $fillable = array('title', 'metric', 'targetAmount', 'targetDate');
+	protected $fillable = array('title', 'metric', 'target_amount', 'target_date');
 
   public function user() {
     return $this->belongsTo('User');
