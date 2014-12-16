@@ -15,8 +15,13 @@ class WorkoutCreateService {
       'activity_id' => array('required', 'numeric', 'exists:activities,id'),
       'metric_id' => array('required', 'numeric', 'exists:metrics,id'),
       'amount' => array('required', 'numeric', 'min:0.01'),
-      'duration' => array('required', 'numeric', 'min:0.01')
+      'duration_hours' => array('numeric', 'min:0'),
+      'duration_minutes' => array('required', 'numeric', 'min:0', 'max:59')
     ));
+
+    $this->validator->sometimes('duration_hours', array('required', 'numeric', 'min:1'), function($input) {
+      return $input->duration_minutes == 0;
+    });
   }
 
   public function workout() {
@@ -31,11 +36,16 @@ class WorkoutCreateService {
     $workout = $this->workout;
     $data = $this->data;
 
+    $duration = $data['duration_minutes'];
+    if(!empty($data['duration_hours'])) {
+      $duration += $data['duration_hours'] * 60;
+    }
+
     $workout->user()->associate($this->user);
     $workout->activity_id = $data['activity_id'];
     $workout->metric_id = $data['metric_id'];
     $workout->amount = $data['amount'];
-    $workout->duration = $data['duration'];
+    $workout->duration = $duration;
     $workout->notes = $data['notes'];
     $workout->save();
 

@@ -26,7 +26,12 @@
         <dd>{{ $workout->amount }}</dd>
 
         <dt>Duration</dt>
-        <dd>{{ $workout->duration }} minutes</dd>
+        <dd>
+          @if($workout->duration_hours > 0)
+            {{ $workout->duration_hours }} hours
+          @endif
+          {{ $workout->duration_minutes }} minutes
+        </dd>
       </dl>
 
       @if($workout->notes)

@@ -19,7 +19,7 @@ class WorkoutsController extends \BaseController {
 	}
 
 	public function store() {
-		$data = Input::only('activity_id', 'metric_id', 'amount', 'duration', 'notes');
+		$data = Input::only('activity_id', 'metric_id', 'amount', 'duration_hours', 'duration_minutes', 'notes');
 
 		$workoutCreate = new WorkoutCreateService(Auth::user(), $data);
 
@@ -49,7 +49,7 @@ class WorkoutsController extends \BaseController {
 	}
 
 	public function update($id) {
-		$data = Input::only('amount', 'duration', 'notes');
+		$data = Input::only('amount', 'duration_hours', 'duration_minutes', 'notes');
 
 		$workout = Workout::findOrFail($id);
 
