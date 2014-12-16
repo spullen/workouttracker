@@ -9,7 +9,7 @@ class CreateGoals extends Migration {
 		Schema::create('goals', function($table) {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
-			$table->foreign('user_id')->references('id')->on('users')->on_delete('cascade');
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			$table->integer('activity_id')->unsigned();
 			$table->foreign('activity_id')->references('id')->on('activities');
 			$table->string('title');
