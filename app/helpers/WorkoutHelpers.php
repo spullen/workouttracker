@@ -1,7 +1,7 @@
 <?php
 class WorkoutHelpers {
     public static function activities() {
-      return array('' => 'Please select activity...') + Activity::lists('name', 'id');
+      return array('' => trans('messages.activity.select')) + Activity::lists('name', 'id');
     }
 
     public static function metrics($activity_id = null) {
@@ -10,10 +10,10 @@ class WorkoutHelpers {
       if($activity_id) {
         // get a list of metrics for the activity
         $activity = Activity::find($activity_id);
-        $metrics += array('' => 'Please select metric...');
+        $metrics += array('' => trans('messages.metric.select'));
         $metrics += $activity->metrics->lists('name', 'id');
       } else {
-        $metrics = array('' => 'Please select activity...');
+        $metrics = array('' => trans('messages.activity.select'));
       }
 
       return $metrics;

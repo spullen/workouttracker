@@ -5,11 +5,11 @@
   <h1>{{ $workout->activity->name }}</h1>
   @if(Authority::can('update', $workout))
   <div>
-    <a href="{{ URL::route('workouts.edit', array($workout->id)) }}" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a>
-    <a href="{{ URL::route('workouts.destroy', array($workout->id)) }}" class="btn btn-danger" data-method="delete" data-confirm="Are you sure you want to delete workout?"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</a> 
+    <a href="{{ URL::route('workouts.edit', array($workout->id)) }}" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {{ trans('messages.edit.label') }}</a>
+    <a href="{{ URL::route('workouts.destroy', array($workout->id)) }}" class="btn btn-danger" data-method="delete" data-confirm="{{ trans('workouts.delete_confirmation') }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {{ trans('messages.delete.label') }}</a> 
   </div>
   @else
-  <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> You cannot edit a workout after 24 hours.</p>
+  <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> {{ trans('workouts.cannot_edit_after_24_hours') }}</p>
   @endif
 </div>
 @stop
@@ -19,18 +19,18 @@
   <div class="row">
     <div class="col-md-6">
       <dl>
-        <dt>Metric</dt>
+        <dt>{{ trans('workouts.metric.label') }}</dt>
         <dd>{{ $workout->metric->name }}</dd>
 
-        <dt>Amount</dt>
+        <dt>{{ trans('workouts.amount.label') }}</dt>
         <dd>{{ $workout->amount }}</dd>
 
-        <dt>Duration</dt>
+        <dt>{{ trans('workouts.duration.label') }}</dt>
         <dd>@include('_duration', array('hours' => $workout->duration_hours, 'minutes' => $workout->duration_minutes))</dd>
       </dl>
 
       @if($workout->notes)
-      <h4>Notes:</h4>
+      <h4>{{ trans('workouts.notes.label') }}:</h4>
       <p>{{ nl2br(e($workout->notes)) }}<p>
       @endif
     </div>

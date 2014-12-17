@@ -3,23 +3,23 @@
 @section('header')
 <div class="container">
   <div class="page-header">
-    <h1>Workouts</h1>
+    <h1>{{ trans('workouts.index.title') }}</h1>
   </div>
 </div>
 @stop
 
 @section('content')
 <div class="container">
-  <p><a href="{{ URL::route('workouts.create') }}">Log workout</a></p>
+  <p><a href="{{ URL::route('workouts.create') }}">{{ trans('workouts.log_workout') }}</a></p>
 
   @if(count($workouts))
     <table class="table table-striped table-bordered table-responsive">
       <thead>
         <tr>
-          <th>Activity</th>
-          <th>Metric</th>
-          <th>Amount</th>
-          <th>Duration</th>
+          <th>{{ trans('workouts.activity.label') }}</th>
+          <th>{{ trans('workouts.metric.label') }}</th>
+          <th>{{ trans('workouts.amount.label') }}</th>
+          <th>{{ trans('workouts.duration.label') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -39,7 +39,7 @@
     </div>
   @else
     <p>
-      You don't have any workouts logged! Get out and do something, then <a href="{{ URL::route('workouts.create') }}">log it!</a>
+      {{ trans('workouts.no_workouts_log_it', array('create_url' => URL::route('workouts.create'))) }}
     </p>
   @endif
 </div>

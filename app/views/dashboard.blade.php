@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <a class="btn btn-info" href="{{ URL::route('workouts.create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Log Workout</a>
+      <a class="btn btn-info" href="{{ URL::route('workouts.create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ trans('workouts.log_workout') }}</a>
       <a class="btn btn-info" href="{{ URL::route('goals.create') }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Create Goal</a>
     </div>
   </div>
@@ -103,7 +103,7 @@
       <h2>Recently Logged Workouts</h2>
 
       @if(count($recentlyLoggedWorkouts))
-        <p><a href="{{ URL::route('workouts.create') }}">Log Workout</a></p>
+        <p><a href="{{ URL::route('workouts.create') }}">{{ trans('workouts.log_workout') }}</a></p>
 
         <table class="table table-bordered table-striped table-responsive">
           <thead>
