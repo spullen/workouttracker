@@ -1,13 +1,5 @@
 @extends('layouts.main')
 
-@section('header')
-<div class="container">
-  <div class="page-header">
-    <h1>Dashboard</h1>
-  </div>
-</div>
-@stop
-
 @section('content')
 <div class="container">
   <div class="row">
