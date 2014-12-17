@@ -32,7 +32,7 @@ class WorkoutsController extends \BaseController {
 
 		$workoutCreate->perform();
 
-		Session::flash('message', 'Successfully logged workout!');
+		Session::flash('message', trans('workouts.create.success'));
 		return Redirect::action('workouts.index');
 	}
 
@@ -66,7 +66,7 @@ class WorkoutsController extends \BaseController {
 
 		$workoutUpdate->perform();
 
-		Session::flash('message', 'Successfully updated workout!');
+		Session::flash('message', trans('workouts.update.success'));
 		return Redirect::action('workouts.index');
 	}
 
@@ -78,7 +78,7 @@ class WorkoutsController extends \BaseController {
 		$workoutDestroy = new WorkoutDestroyService($workout);
 		$workoutDestroy->perform();
 
-		Session::flash('message', 'Successfully deleted workout.');
+		Session::flash('message', trans('workouts.delete.success'));
 		return Redirect::action('workouts.index');
 	}
 
