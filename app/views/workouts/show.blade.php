@@ -26,12 +26,7 @@
         <dd>{{ $workout->amount }}</dd>
 
         <dt>Duration</dt>
-        <dd>
-          @if($workout->duration_hours > 0)
-            {{ $workout->duration_hours }} hours
-          @endif
-          {{ $workout->duration_minutes }} minutes
-        </dd>
+        <dd>@include('_duration', array('hours' => $workout->duration_hours, 'minutes' => $workout->duration_minutes))</dd>
       </dl>
 
       @if($workout->notes)
