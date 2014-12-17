@@ -33,7 +33,7 @@ class WorkoutsController extends \BaseController {
 		$workoutCreate->perform();
 
 		Session::flash('message', trans('workouts.create.success'));
-		return Redirect::action('workouts.index');
+		return Redirect::action('DashboardController@index');
 	}
 
 	public function show($id) {
@@ -67,7 +67,7 @@ class WorkoutsController extends \BaseController {
 		$workoutUpdate->perform();
 
 		Session::flash('message', trans('workouts.update.success'));
-		return Redirect::action('workouts.index');
+		return Redirect::action('workouts.show', array('id' => $id));
 	}
 
 	public function destroy($id) {
@@ -79,7 +79,7 @@ class WorkoutsController extends \BaseController {
 		$workoutDestroy->perform();
 
 		Session::flash('message', trans('workouts.delete.success'));
-		return Redirect::action('workouts.index');
+		return Redirect::action('DashboardController@index');
 	}
 
 }
