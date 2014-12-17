@@ -13,5 +13,6 @@ return array(
   'delete.success' => 'Successfully deleted workout.',
   'cannot_edit_after_24_hours' => 'You cannot edit a workout after 24 hours.',
   'delete_confirmation' => 'Are you sure you want to delete workout?',
-  'no_workouts_log_it' => "You don't have any workouts logged! Get out and do something, then <a href=\":create_url\">log it!</a>"
+  'no_workouts_log_it' => "You don't have any workouts logged! Get out and do something, then <a href=\":create_url\">log it!</a>",
+  'recently_logged_workouts' => 'Recently Logged Workouts'
 );

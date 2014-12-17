@@ -100,7 +100,7 @@
   @endif
   <div class="row">
     <div class="col-md-12">
-      <h2>Recently Logged Workouts</h2>
+      <h2>{{ trans('workouts.recently_logged_workouts') }}</h2>
 
       @if(count($recentlyLoggedWorkouts))
         <p><a href="{{ URL::route('workouts.create') }}">{{ trans('workouts.log_workout') }}</a></p>
@@ -108,10 +108,10 @@
         <table class="table table-bordered table-striped table-responsive">
           <thead>
             <tr>
-              <th>Activity</th>
-              <th>Metric</th>
-              <th>Amount</th>
-              <th>Duration (in minutes)</th>
+              <th>{{ trans('workouts.activity.label') }}</th>
+              <th>{{ trans('workouts.metric.label') }}</th>
+              <th>{{ trans('workouts.amount.label') }}</th>
+              <th>{{ trans('workouts.duration.label') }}</th>
             </tr>
           </thead>
           <tbody>
