@@ -7,7 +7,7 @@ class AddCaloriesToWorkout extends Migration {
 
 	public function up() {
 		Schema::table('workouts', function($table) {
-			$table->decimal('calories', 10, 2)->nullable();
+			$table->integer('calories')->unsigned();
 		});
 	}
 
