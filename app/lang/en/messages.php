@@ -1,6 +1,8 @@
 <?php
 
 return array(
+  'view_all' => 'View All',
+
   'create.label' => 'Create',
   'update.label' => 'Update',
   'edit.label' => 'Edit',

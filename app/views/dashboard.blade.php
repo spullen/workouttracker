@@ -94,7 +94,7 @@
         </tbody>
       </table>
 
-      <p><a href="{{ URL::route('goals.index') }}">View All</a><p>
+      <p><a href="{{ URL::route('goals.index') }}">{{ trans('messages.view_all') }}</a><p>
     </div>
   </div>
   @endif
