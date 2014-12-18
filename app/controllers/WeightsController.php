@@ -18,6 +18,25 @@ class WeightsController extends \BaseController {
   }
 
   public function store() {
+    $data = Input::only('amount');
+
+    $weight = new Weight($data);
+
+    $validator = Validator::make($data, array(
+      'amount' => array('required', 'numeric', 'min:0.1', 'max:999.9')
+    ));
+
+    if($validator->fails()) {
+      return View::make('weights.create')
+                    ->withErrors($validator)
+                    ->withInput(Input::all())
+                    ->with('weight', $weight);
+    }
+
+    $weight->user()->associate(Auth::user());
+    $weight->save();
+
+    Session::flash('message', 'Successfully logged weight.');
     return Redirect::to('dashboard');
   }
 

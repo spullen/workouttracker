@@ -15,6 +15,7 @@
         <li><a href="{{ action('dashboard') }}">Dashboard</a><li>
         <li><a href="{{ action('workouts.index') }}">Workouts</a></li>
         <li><a href="{{ action('goals.index') }}">Goals</a></li>
+        <li><a href="{{ action('weight.index') }}">Track Weight</a></li>
       </ul>
       @endif
       <ul class="nav navbar-nav navbar-right">

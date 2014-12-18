@@ -6,6 +6,7 @@
     <div class="col-md-12">
       <a class="btn btn-info" href="{{ URL::route('workouts.create') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ trans('workouts.log_workout') }}</a>
       <a class="btn btn-info" href="{{ URL::route('goals.create') }}"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Create Goal</a>
+      <a class="btn btn-info" href="{{ URL::route('weight.create') }}"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Log Current Weight</a>
     </div>
   </div>
   <div class="row">
