@@ -33,7 +33,7 @@ class GoalsController extends \BaseController {
 		$goalCreate->perform();
 
 		Session::flash('message', 'Successfully logged goal!');
-		return Redirect::action('DashboardController@index');
+		return Redirect::action('dashboard');
 	}
 
 	public function show($id) {
@@ -84,7 +84,7 @@ class GoalsController extends \BaseController {
 		$goal->delete();
 
 		Session::flash('message', 'Successfully deleted goal.');
-		return Redirect::action('DashboardController@index');
+		return Redirect::action('dashboard');
 	}
 
 }

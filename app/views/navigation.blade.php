@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse">
       @if(Auth::check())
       <ul class="nav navbar-nav">
-        <li><a href="{{ action('DashboardController@index') }}">Dashboard</a><li>
+        <li><a href="{{ action('dashboard') }}">Dashboard</a><li>
         <li><a href="{{ action('workouts.index') }}">Workouts</a></li>
         <li><a href="{{ action('goals.index') }}">Goals</a></li>
       </ul>

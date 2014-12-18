@@ -21,10 +21,11 @@ Route::post('login', 'SessionController@store');
 Route::delete('logout', 'SessionController@destroy');
 
 Route::group(array('before' => 'auth'), function() {
-  Route::get('dashboard', 'DashboardController@index');
+  Route::get('dashboard', array('as' => 'dashboard', 'uses' => 'DashboardController@index'));
 
   Route::get('activity_metrics/{id?}', 'ActivityMetricsController@index');
 
+  Route::resource('weight', 'WeightsController', array('only' => array('index', 'create', 'store')));
   Route::resource('workouts', 'WorkoutsController');
   Route::resource('goals', 'GoalsController');
 });
