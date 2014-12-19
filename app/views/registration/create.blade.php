@@ -45,6 +45,13 @@
         {{ $errors->first('birthdate', '<span class="help-block">:message</span>') }}
       </div>
     </div>
+    <div class="form-group {{ $errors->has('weight') ? 'has-error' : '' }}">
+      {{ Form::label('weight', 'Weight', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
+        {{ Form::text('weight', Input::get('weight'), array('class' => 'form-control')) }}
+        {{ $errors->first('weight', '<span class="help-block">:message</span>') }}
+      </div>
+    </div>
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
       {{ Form::label('email', 'Email *', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">

@@ -12,6 +12,7 @@ class RegistrationController extends BaseController {
       'last_name' => array('required'),
       'sex' => array('required', 'in:m,f'),
       'birthdate' => array('required', 'regex:/\d{4}-\d{1,2}-\d{1,2}/', 'date_format:Y-m-d'),
+      'weight' => array('numeric', 'min:0.1', 'max:999.9'),
       'email' => array('required', 'email', 'unique:users,email'),
       'password' => array('required', 'min:8', 'confirmed')
     );
@@ -29,6 +30,13 @@ class RegistrationController extends BaseController {
       $user->email = Input::get('email');
       $user->password = Hash::make(Input::get('password'));
       $user->save();
+
+      if(Input::get('weight')) {
+        $weight = new Weight();
+        $weight->amount = Input::get('weight');
+        $weight->user()->associate($user);
+        $weight->save();
+      }
 
       Auth::login($user);
 
