@@ -8,8 +8,9 @@ class RegistrationController extends BaseController {
 
   public function store() {
     $rules = array(
-      'first_name' => 'required',
-      'last_name' => 'required',
+      'first_name' => array('required'),
+      'last_name' => array('required'),
+      'sex' => array('required', 'in:m,f'),
       'email' => array('required', 'email', 'unique:users,email'),
       'password' => array('required', 'min:8', 'confirmed')
     );
@@ -22,6 +23,7 @@ class RegistrationController extends BaseController {
       $user = new User();
       $user->first_name = Input::get('first_name');
       $user->last_name = Input::get('last_name');
+      $user->sex = Input::get('sex');
       $user->email = Input::get('email');
       $user->password = Hash::make(Input::get('password'));
       $user->save();
@@ -30,7 +32,7 @@ class RegistrationController extends BaseController {
 
       Session::flash('message', 'Successfully signed up!');
 
-      return Redirect::to('/dashboard');
+      return Redirect::action('dashboard');
     }
   }
 
