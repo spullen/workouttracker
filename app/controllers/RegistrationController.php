@@ -31,6 +31,14 @@ class RegistrationController extends BaseController {
       $user->password = Hash::make(Input::get('password'));
       $user->save();
 
+      $userSetting = new UserSetting();
+      $userSetting->user()->associate($user);
+      $userSetting->save();
+
+      $notificationPreference = new NotificationPreference();
+      $notificationPreference->user()->associate($user);
+      $notificationPreference->save();
+
       if(Input::get('weight')) {
         $weight = new Weight();
         $weight->amount = Input::get('weight');
