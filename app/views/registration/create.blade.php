@@ -26,16 +26,16 @@
         {{ $errors->first('last_name', '<span class="help-block">:message</span>') }}
       </div>
     </div>
-    <div class="form-group {{ $errors->has('sex') ? 'has-error' : '' }}">
-      {{ Form::label('sex', 'Sex *', array('class' => 'control-label col-md-2')) }}
+    <div class="form-group {{ $errors->has('gender') ? 'has-error' : '' }}">
+      {{ Form::label('gender', 'Gender *', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
         <label class="radio-inline">
-          {{ Form::radio('sex', 'm') }} Male
+          {{ Form::radio('gender', 'm') }} Male
         </label>
         <label class="radio-inline">
-          {{ Form::radio('sex', 'f') }} Female
+          {{ Form::radio('gender', 'f') }} Female
         </label>
-        {{ $errors->first('sex', '<span class="help-block">:message</span>') }}
+        {{ $errors->first('gender', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     <div class="form-group {{ $errors->has('birthdate') ? 'has-error' : '' }}">
