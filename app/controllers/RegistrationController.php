@@ -13,6 +13,7 @@ class RegistrationController extends BaseController {
       'gender' => array('required', 'in:m,f'),
       'birthdate' => array('required', 'regex:/\d{4}-\d{1,2}-\d{1,2}/', 'date_format:Y-m-d'),
       'weight' => array('numeric', 'min:0.1', 'max:999.9'),
+      'weight_unit' => array('required', 'in:mi,km'),
       'email' => array('required', 'email', 'unique:users,email'),
       'password' => array('required', 'min:8', 'confirmed')
     );
@@ -33,6 +34,7 @@ class RegistrationController extends BaseController {
 
       $userSetting = new UserSetting();
       $userSetting->user()->associate($user);
+      $userSetting->weight_unit = Input::get('weight_unit');
       $userSetting->save();
 
       $notificationPreference = new NotificationPreference();
