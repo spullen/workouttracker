@@ -38,18 +38,6 @@
         {{ $errors->first('gender', '<span class="help-block">:message</span>') }}
       </div>
     </div>
-    <div class="form-group {{ $errors->has('weight_unit') ? 'has-error' : '' }}">
-      {{ Form::label('weight_unit', 'Weight Units *', array('class' => 'control-label col-md-2')) }}
-      <div class="col-md-6">
-        <label class="radio-inline">
-          {{ Form::radio('weight_unit', 'mi', true) }} Miles
-        </label>
-        <label class="radio-inline">
-          {{ Form::radio('weight_unit', 'km') }} Kilometers
-        </label>
-        {{ $errors->first('weight_unit', '<span class="help-block">:message</span>') }}
-      </div>
-    </div>
     <div class="form-group {{ $errors->has('birthdate') ? 'has-error' : '' }}">
       {{ Form::label('birthdate', 'Birthdate *', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
@@ -62,6 +50,18 @@
       <div class="col-md-6">
         {{ Form::text('weight', Input::get('weight'), array('class' => 'form-control')) }}
         {{ $errors->first('weight', '<span class="help-block">:message</span>') }}
+      </div>
+    </div>
+    <div class="form-group {{ $errors->has('weight_unit') ? 'has-error' : '' }}">
+      {{ Form::label('weight_unit', 'Weight Units *', array('class' => 'control-label col-md-2')) }}
+      <div class="col-md-6">
+        <label class="radio-inline">
+          {{ Form::radio('weight_unit', 'mi', true) }} Miles
+        </label>
+        <label class="radio-inline">
+          {{ Form::radio('weight_unit', 'km') }} Kilometers
+        </label>
+        {{ $errors->first('weight_unit', '<span class="help-block">:message</span>') }}
       </div>
     </div>
     <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
