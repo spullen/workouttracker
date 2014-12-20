@@ -56,10 +56,10 @@
       {{ Form::label('weight_unit', 'Weight Units *', array('class' => 'control-label col-md-2')) }}
       <div class="col-md-6">
         <label class="radio-inline">
-          {{ Form::radio('weight_unit', 'mi', true) }} Miles
+          {{ Form::radio('weight_unit', 'lb', true) }} Pounds
         </label>
         <label class="radio-inline">
-          {{ Form::radio('weight_unit', 'km') }} Kilometers
+          {{ Form::radio('weight_unit', 'kg') }} Kilograms
         </label>
         {{ $errors->first('weight_unit', '<span class="help-block">:message</span>') }}
       </div>
