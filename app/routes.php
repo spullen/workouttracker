@@ -25,6 +25,9 @@ Route::group(array('before' => 'auth'), function() {
 
   Route::get('activity_metrics/{id?}', 'ActivityMetricsController@index');
 
+  Route::get('settings', array('as' => 'settings.edit', 'uses' => 'UserSettingsController@edit'));
+  Route::put('settings', array('as' => 'settings.update', 'uses' => 'UserSettingsController@update'));
+
   Route::resource('weight', 'WeightsController', array('only' => array('index', 'create', 'store')));
   Route::resource('workouts', 'WorkoutsController');
   Route::resource('goals', 'GoalsController');

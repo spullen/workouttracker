@@ -23,8 +23,16 @@
           <li><a href="{{ action('register.create') }}">Sign up</a></li>
           <li><a href="{{ url('login') }}">Login</a></li>
         @else
-          <li class="navbar-text">Hello, {{ Auth::user()->name }}</li>
-          <li><a href="{{ url('logout') }}" data-method="delete">Logout</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hello, {{ Auth::user()->name }} <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{ action('settings.edit') }}">User Settings</a></li>
+              <li><a href="#">Notification Settings</a></li>
+              <li><a href="#">Change Password</a></li>
+              <li class="divider"></li>
+              <li><a href="{{ url('logout') }}" data-method="delete">Logout</a></li>
+            </ul>
+          </li>
         @endif
       </ul>
     </div>
