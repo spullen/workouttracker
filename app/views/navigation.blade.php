@@ -7,12 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Workout Tracker</a>
+      <a class="navbar-brand" href="/">getMoving.fitness</a>
     </div>
     <div class="collapse navbar-collapse">
       @if(Auth::check())
       <ul class="nav navbar-nav">
-        <li><a href="{{ action('dashboard') }}">Dashboard</a><li>
         <li><a href="{{ action('workouts.index') }}">Workouts</a></li>
         <li><a href="{{ action('goals.index') }}">Goals</a></li>
         <li><a href="{{ action('weight.index') }}">Track Weight</a></li>
