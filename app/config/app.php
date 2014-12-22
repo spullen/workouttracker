@@ -194,7 +194,6 @@ return array(
 		'Carbon'            => 'Carbon\Carbon',
 		'Params'            => 'Efficiently\AuthorityController\Facades\Params',
    	'Authority'         => 'Efficiently\AuthorityController\Facades\Authority',
-
 	),
 
 );
