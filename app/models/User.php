@@ -44,6 +44,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
                 ->get();
   }
 
+  public function getWeightUnitAttribute() {
+    return $this->userSetting->weight_unit;
+  }
+
+  public function getDistanceUnitAttribute() {
+    return $this->userSetting->distance_unit;
+  }
+
   public function recentlyAccomplishedGoals() {
     $now = Carbon::now();
     $startWeek = $now->subWeek()->toDateString();

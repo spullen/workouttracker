@@ -33,6 +33,8 @@ class GoalCreateService {
 
     $goal->user()->associate($this->user);
 
+    // TODO: convert the target_date from user 
+
     $goal->title = trim($data['title']);
     $goal->activity_id = $data['activity_id'];
     $goal->metric_id = $data['metric_id'];

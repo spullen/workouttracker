@@ -35,7 +35,7 @@ class WorkoutCreateService {
   public function perform() {
     $workout = $this->workout;
     $data = $this->data;
-
+    
     $duration = $data['duration_minutes'];
     if(!empty($data['duration_hours'])) {
       $duration += $data['duration_hours'] * 60;
