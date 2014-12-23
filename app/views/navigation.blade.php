@@ -27,7 +27,7 @@
             <ul class="dropdown-menu" role="menu">
               <li><a href="{{ action('settings.edit') }}">User Settings</a></li>
               <li><a href="{{ action('notifications.edit') }}">Notification Preferences</a></li>
-              <li><a href="#">Change Password</a></li>
+              <li><a href="{{ action('password.edit') }}">Change Password</a></li>
               <li class="divider"></li>
               <li><a href="{{ url('logout') }}" data-method="delete">Logout</a></li>
             </ul>
