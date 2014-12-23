@@ -113,6 +113,7 @@
               <th>{{ trans('workouts.metric.label') }}</th>
               <th>{{ trans('workouts.amount.label') }}</th>
               <th>{{ trans('workouts.duration.label') }}</th>
+              <th>{{ trans('workouts.calories.label') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -120,8 +121,9 @@
               <tr>
                 <td><a href="{{ URL::route('workouts.show', array($workout->id)) }}">{{ $workout->activity->name }}</a></td>
                 <td>{{ $workout->metric->name }}</td>
-                <td>{{ $workout->amount }}</td>
+                <td>{{ $workout->amount }} {{$workout->distance_unit }}</td>
                 <td>@include('_duration', array('hours' => $workout->duration_hours, 'minutes' => $workout->duration_minutes))</td>
+                <td>{{ $workout->calories }}</td>
               </tr>
             @endforeach
           </tbody>

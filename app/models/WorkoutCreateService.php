@@ -54,7 +54,10 @@ class WorkoutCreateService {
       $workout->distance_unit = $this->user->distance_unit;
     }
 
-    
+    // calculate calories
+    $met = $activity->met;
+    $weight_amount = $this->user->weight_amount_kg;
+    $workout->calories = ($weight_amount * $met) * ($duration / 60);
 
     $workout->notes = $data['notes'];
     $workout->save();

@@ -52,6 +52,31 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     return $this->userSetting->distance_unit;
   }
 
+  public function getTimezoneAttribute() {
+    return $this->userSetting->timezone;
+  }
+
+  public function getWeightAmountKgAttribute() {
+    $weight_amount = null;
+
+    $weight = $this->weight();
+    
+    if(is_null($weight)) {
+      if($this->sex == 'm') {
+        Config::get('weights.average.male');
+      } else {
+        Config::get('weights.average.female');
+      }
+    } else {
+      $weight_amount = $weight->amount;
+      if($weight->weight_unit == 'lb') {
+        $weight_amount = $weight_amount / 2.2;
+      }
+    }
+
+    return $weight_amount;
+  }
+
   public function recentlyAccomplishedGoals() {
     $now = Carbon::now();
     $startWeek = $now->subWeek()->toDateString();

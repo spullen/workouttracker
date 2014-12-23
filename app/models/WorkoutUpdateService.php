@@ -32,8 +32,6 @@ class WorkoutUpdateService {
     $workout = $this->workout;
     $data = $this->data;
 
-    $activity = Activity::find($data['activity_id']);
-
     $duration = $data['duration_minutes'];
     if(!empty($data['duration_hours'])) {
       $duration += $data['duration_hours'] * 60;
@@ -44,9 +42,6 @@ class WorkoutUpdateService {
     $workout->notes = $data['notes'];
 
     if($workout->isDirty('amount')) {
-      // re-calculate the calories burned
-      
-      
       $originalAmount = $workout->getOriginal('amount');
       $goals = $workout->goals()->get();
 
@@ -56,6 +51,13 @@ class WorkoutUpdateService {
         $goal->determineAccomplishedState();
         $goal->save();    
       }
+    }
+
+    // re-calculate the calories burned if duration changed
+    if($workout->isDirty('duration')) {
+      $met = $workout->activity->met;
+      $weight_amount = $workout->user->weight_amount_kg;
+      $workout->calories = ($weight_amount * $met) * ($duration / 60);
     }
     
     $workout->save();

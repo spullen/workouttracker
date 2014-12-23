@@ -6,6 +6,7 @@ return array(
   'metric.label' => 'Metric',
   'amount.label' => 'Amount',
   'duration.label' => 'Duration',
+  'calories.label' => 'Calories',
   'notes.label' => 'Notes',
   'log_workout' => 'Log Workout',
   'create.success' => 'Successfully logged workout!',

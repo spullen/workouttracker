@@ -23,10 +23,13 @@
         <dd>{{ $workout->metric->name }}</dd>
 
         <dt>{{ trans('workouts.amount.label') }}</dt>
-        <dd>{{ $workout->amount }}</dd>
+        <dd>{{ $workout->amount }} {{ $workout->distance_unit }}</dd>
 
         <dt>{{ trans('workouts.duration.label') }}</dt>
         <dd>@include('_duration', array('hours' => $workout->duration_hours, 'minutes' => $workout->duration_minutes))</dd>
+
+        <dt>{{ trans('workouts.calories.label') }}</dt>
+        <dd>{{ $workout->calories }}</dd>
       </dl>
 
       @if($workout->notes)
