@@ -44,6 +44,7 @@ class RegistrationController extends BaseController {
       if(Input::get('weight')) {
         $weight = new Weight();
         $weight->amount = Input::get('weight');
+        $weight->weight_unit = Input::get('weight_unit');
         $weight->user()->associate($user);
         $weight->save();
       }

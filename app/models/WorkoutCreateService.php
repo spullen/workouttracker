@@ -37,6 +37,7 @@ class WorkoutCreateService {
     $data = $this->data;
 
     $metric = Metric::find($data['metric_id']);
+    $activity = Activity::find($data['activity_id']);
 
     $duration = $data['duration_minutes'];
     if(!empty($data['duration_hours'])) {
@@ -52,6 +53,8 @@ class WorkoutCreateService {
     if($metric->name == 'Distance') {
       $workout->distance_unit = $this->user->distance_unit;
     }
+
+    
 
     $workout->notes = $data['notes'];
     $workout->save();

@@ -32,6 +32,8 @@ class WorkoutUpdateService {
     $workout = $this->workout;
     $data = $this->data;
 
+    $activity = Activity::find($data['activity_id']);
+
     $duration = $data['duration_minutes'];
     if(!empty($data['duration_hours'])) {
       $duration += $data['duration_hours'] * 60;
@@ -41,13 +43,13 @@ class WorkoutUpdateService {
     $workout->duration = $duration;
     $workout->notes = $data['notes'];
 
-    // update the workout's goals' current amount if the amount has changed
     if($workout->isDirty('amount')) {
+      // re-calculate the calories burned
+      
+      
       $originalAmount = $workout->getOriginal('amount');
-
       $goals = $workout->goals()->get();
 
-      // update all of the workout's goals for the new value
       foreach($goals as $goal) {
         $goal->current_amount -= $originalAmount;
         $goal->current_amount += $workout->amount;

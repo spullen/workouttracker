@@ -34,6 +34,7 @@ class WeightsController extends \BaseController {
     }
 
     $weight->user()->associate(Auth::user());
+    $weight->weight_unit = Auth::user()->weight_unit;
     $weight->save();
 
     Session::flash('message', 'Successfully logged weight.');
