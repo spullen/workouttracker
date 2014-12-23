@@ -35,7 +35,9 @@ class WorkoutCreateService {
   public function perform() {
     $workout = $this->workout;
     $data = $this->data;
-    
+
+    $metric = Metric::find($data['metric_id']);
+
     $duration = $data['duration_minutes'];
     if(!empty($data['duration_hours'])) {
       $duration += $data['duration_hours'] * 60;
@@ -46,6 +48,11 @@ class WorkoutCreateService {
     $workout->metric_id = $data['metric_id'];
     $workout->amount = $data['amount'];
     $workout->duration = $duration;
+
+    if($metric->name == 'Distance') {
+      $workout->distance_unit = $this->user->distance_unit;
+    }
+
     $workout->notes = $data['notes'];
     $workout->save();
 

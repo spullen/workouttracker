@@ -31,14 +31,20 @@ class GoalCreateService {
     $goal = $this->goal;
     $data = $this->data;
 
-    $goal->user()->associate($this->user);
+    $metric = Metric::find($data['metric_id']);
 
     // TODO: convert the target_date from user 
 
+    $goal->user()->associate($this->user);
     $goal->title = trim($data['title']);
     $goal->activity_id = $data['activity_id'];
     $goal->metric_id = $data['metric_id'];
     $goal->target_amount = $data['target_amount'];
+
+    if($metric->name == 'Distance') {
+      $goal->distance_unit = $this->user->distance_unit;
+    }
+
     $goal->target_date = $data['target_date'];
     $goal->save();
   }
