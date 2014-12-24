@@ -19,6 +19,7 @@
       @endif
       <ul class="nav navbar-nav navbar-right">
         @if(!Auth::check())
+          <li><a href="{{ url('about') }}">About</a></li>
           <li><a href="{{ action('register.create') }}">Sign up</a></li>
           <li><a href="{{ url('login') }}">Login</a></li>
         @else

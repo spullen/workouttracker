@@ -7,6 +7,10 @@ Route::get('/', function() {
 	return View::make('home');
 });
 
+Route::get('about', function() {
+  return View::make('about');
+});
+
 Route::resource('register', 'RegistrationController', array('only' => array('create', 'store')));
 Route::get('login', 'SessionController@create');
 Route::post('login', 'SessionController@store');
