@@ -49,6 +49,8 @@ class RegistrationController extends BaseController {
         $weight->save();
       }
 
+      
+
       Auth::login($user);
 
       Session::flash('message', 'Successfully signed up!');
