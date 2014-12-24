@@ -124,6 +124,7 @@ return array(
 		'Efficiently\AuthorityController\AuthorityControllerServiceProvider',
 		'Barryvdh\HttpCache\ServiceProvider',
 		'Camroncade\Timezone\TimezoneServiceProvider',
+		'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
 
 	),
 

@@ -2,7 +2,7 @@
 
 @section('stylesheets')
   @parent
-  <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
+  {{ stylesheet_link_tag('home') }}
 @stop
 
 @section('content')

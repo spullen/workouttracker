@@ -1,3 +1,7 @@
+/*
+ *= require_self
+ */
+
 @-webkit-keyframes backgroundImage {
   0%   { background-image: url('/images/running1.jpg'); }
   25%  { background-image: url('/images/cycling1.jpg'); }

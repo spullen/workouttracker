@@ -9,7 +9,8 @@
 		"efficiently/authority-controller": "1.2.*",
 		"pda/pheanstalk": "~2.0",
 		"barryvdh/laravel-httpcache": "0.1.*",
-		"camroncade/timezone": "dev-master"
+		"camroncade/timezone": "dev-master",
+		"codesleeve/asset-pipeline": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
