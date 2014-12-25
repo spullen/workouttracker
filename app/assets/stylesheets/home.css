@@ -33,7 +33,7 @@
 
 #main-wrapper {
   height: 100vh;
-  background-image: url('/images/running1.jpg');
+  background-image: url('/assets/running1.jpg');
   background-position: center top;
   background-size: cover;
   -webkit-animation: backgroundImage 60s 0s infinite;
