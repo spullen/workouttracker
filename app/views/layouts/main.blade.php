@@ -14,7 +14,7 @@
 <body>
 <div id="main-wrapper">
   @include('navigation')
-  <div id="main" role="main" class="container">
+  <div id="main" role="main">
     @include('messages')
     @yield('header')
     @yield('content')
