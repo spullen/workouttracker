@@ -49,7 +49,9 @@ class RegistrationController extends BaseController {
         $weight->save();
       }
 
-      
+      Mail::queue('email.welcome', array(), function($message) use ($user) {
+        $message->to($user->email, $user->name)->subject('Welcome to getMoving.fitness!');
+      });
 
       Auth::login($user);
 
