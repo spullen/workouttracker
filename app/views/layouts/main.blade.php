@@ -9,7 +9,7 @@
   @if(App::environment('production'))
     <link rel="stylesheet" type="text/css" href="//assets.getmoving.fitness/css/app.min.css">
   @else
-    <link rel="stylesheet" type="text/css" href="//localhost:9000/css/app.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:9000/css/app.css">
   @endif
   <meta content="_token" name="csrf-param" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -35,7 +35,7 @@
   ga('send', 'pageview');
 </script>
 @else
-<script src="//localhost:9000/js/app.js"></script>
+<script src="http://localhost:9000/js/app.js"></script>
 @endif
 </body>
 </html>
