@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>getMoving.fitness</title>
 
-  @section('stylesheets')
-    {{ stylesheet_link_tag() }}
-  @show
+  @if(App::environment('production'))
+    <link rel="stylesheet" type="text/css" href="//assets.getmoving.fitness/css/app.min.css">
+  @else
+    <link rel="stylesheet" type="text/css" href="//localhost:9000/css/app.css">
+  @endif
   <meta content="_token" name="csrf-param" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-<div id="main-wrapper">
+<div id="main-wrapper {{ isset($main_wrapper_class) ? $main_wrapper_class : '' }}">
   @include('navigation')
   <div id="main" role="main">
     @include('messages')
@@ -20,10 +22,8 @@
     @yield('content')
   </div>
 </div>
-@section('javascripts')
-  {{ javascript_include_tag() }}
-@show
 @if(App::environment('production'))
+<script src="//assets.getmoving.fitness/js/app.min.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -32,8 +32,9 @@
 
   ga('create', 'UA-57967867-1', 'auto');
   ga('send', 'pageview');
-
 </script>
+@else
+<script src="//localhost:9000/js/app.js"></script>
 @endif
 </body>
 </html>

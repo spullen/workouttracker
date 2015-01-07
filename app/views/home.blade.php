@@ -1,10 +1,5 @@
 @extends('layouts.main')
 
-@section('stylesheets')
-  @parent
-  {{ stylesheet_link_tag('home') }}
-@stop
-
 @section('content')
 <div class="container">
   <div class="row">

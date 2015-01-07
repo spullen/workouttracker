@@ -4,7 +4,7 @@ Route::get('/', function() {
   if(Auth::check()) {
     return Redirect::action('dashboard');
   }
-	return View::make('home');
+	return View::make('home', array('main_wrapper_class' => 'home-wrapper'));
 });
 
 Route::get('about', function() {
