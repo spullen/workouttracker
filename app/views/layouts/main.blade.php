@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>getMoving.fitness</title>
 
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   @if(App::environment('production'))
     <link rel="stylesheet" type="text/css" href="//assets.getmoving.fitness/css/app.min.css">
   @else
